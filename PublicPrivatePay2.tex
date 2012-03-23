@@ -1,0 +1,385 @@
+\documentclass[a4paper,11pt,titlepage]{article}
+\usepackage{tabularx,booktabs}
+\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+%\usepackage[nolists]{endfloat}
+\usepackage{vmargin,setspace}
+\usepackage[longnamesfirst,sort]{natbib}
+\usepackage{fancyhdr}
+\usepackage{comment,subfigure}
+\usepackage[nodayofweek]{datetime}
+\usepackage[draft,ulem=normalem]{changes}
+
+\usepackage{color}
+\specialcomment{db}{\begin{textcolor}{red}}{\end{textcolor}}
+
+\definechangesauthor[color=red]{db}
+
+
+\usepackage[sc]{mathpazo}
+\linespread{1.05}         % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+
+\widowpenalty10000
+
+\newcolumntype{Y}{>{\small\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering}X}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\cfoot{\thepage}
+\lfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\singlespace
+ \setpapersize{A4}
+ \setmarginsrb{25mm}{25mm}{25mm}{25mm}{12pt}{10mm}{0pt}{10mm}
+\let \citeasnoun\citet
+\let\cite\citep
+\let\citename\citeauthor
+\newcommand{\possessivecite}[1]{%
+   \citeauthor{#1}'s\ \citeyearpar{#1}}
+\bibpunct{(}{)}{;}{a}{}{,}
+\newcommand{\s}{\rlap{$^*$}}
+\renewcommand{\ss}{\rlap{$^{**}$}}
+
+\title{Comparing public and private sector pay across socio-economic groups}
+\author{David N. Barron\\ Sa\"{\i}d Business School\\ University of Oxford}
+\date{\today}
+
+\bibliographystyle{plainnat}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{fancy}
+
+\begin{abstract}
+Abstract here.
+\end{abstract}
+
+\section{Introduction}
+Comparing the levels of pay earned by employees in the public and private sectors is of considerable interest in the media, government and trade unions.  For example, the latter often claim that comparatively generous public sector pensions can be justified in part because of the relatively low basic pay of employees in this sector.  However, research into the issue generally finds that the wages of a ``typical'' public sector employee are higher than those of a ``typical'' private sector worker.  A recent report, for example, put the public sector pay premium at over 40 per cent \citep{Holmes2011}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.5]{SEGsBar.pdf}
+\caption{Proportion of employees in socio-economic groups\label{fig:segs}}
+\end{figure}
+
+The problem with this type of research is that the public and private sector workforces are very different \citep{IDS2011}.  Figure \ref{fig:segs} shows a comparison of the proportion of employees in eleven different socio-economic groups between the public and private sector.  One striking difference between the two sectors is that over 30 per cent of public sector employees are in the group ``intermediate non-manual,'' which includes occupations such as teaching and nursing, compared to only eight per cent of private sector employees.  Comparing the average earnings of a public sector employee with the average earnings of a private sector employee will therefore not be very informative, as the proportion of the variance in an individual's earnings explained by his or her socio-economic group is much larger than the proportion explained by whether he or she works in the public or private sectors.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=.5]{SEGsWave.pdf}
+    \caption{Change in the composition of the public and private sector workforces between 1991 and 2008\label{fig:change}}
+\end{figure}
+
+In this study, we attempt to make a more meaningful comparison between public and private sectors by carrying out separate comparisons within eleven socio-economic groups.  These are groupings of similar occupations, and so by definition the comparisons of employees in the public and private sectors within each group are meaningful.
+
+\begin{db}
+[Say some more about the definition of socio-economic groups and also about the data]
+\end{db}
+
+\section{Literature}
+A number of recent publications have investigated the size of the difference in average earnings between people employed in the public and private sectors.  A report by the Policy Exchange \citep{Holmes2011} created a lot of attention in the media with its central claim that there was a 24 per cent pay premium for working in the public sector in the UK in 2010, with this rising to 43 per cent if the value of pensions was taken into account.  Less widely reported at the time was that this raw difference declined to 8.8 per cent when factors like age, experience and qualifications were taken into account.  However, as some commentators on this report noted, a problem with such comparisons is finding meaningful comparators:
+\begin{quote}
+    Although individuals in the public and private sectors may sometimes be able to identify similar roles within their respective organisations, the sectors as a whole have very different profiles. The public sector employs a higher proportion of professionally-trained staff, undertaking specific service roles such as those within healthcare, education and the emergency services. As a result, a much larger percentage of the public sector workforce is educated to diploma or degree level \citep[p.~13]{IDS2011}
+\end{quote}
+These differences certainly account for a large proportion of the observed raw differences in earnings between the two sectors.  Consequently, a number of studies have attempted to control for variation in employees, either by explicitly modelling factors associated with human capital (for example, education and experience) or, when panel data are used, controlling for individual heterogeneity by means of fixed effects.
+
+\citet{Yu2005} include controls for years of education and work experience to obtain their estimates of a public sector pay premium among lower paid employees but a public sector penalty for highly paid people.  Similarly, \citet{Luciflora2006} find that the highest public sector premium is enjoyed by the lowest paid employees.
+
+\citet{Disney2008} estimate the public sector wage premium (or penalty) using a fixed effects approach, but also adopt a method that allows the size of the premium to change over time.  This is particularly important given that they study the public sector premium over more than thirty years (1975--2006), and so an assumption that the premium was constant would be difficult to justify.  The obtain separate estimates for the premium for men and women, but otherwise assume that it is the same for all employees regardless of occupation.
+
+\citet{Chatterji2007} restrict their attention to public sector premia among male employees, and use a cross-sectional research design based on the Workplace Employee Relations Survey 2004.  They find a raw public sector wage premium of 11.7 per cent.  When they then
+
+\section{Descriptive statistics}
+Over the full 18 waves included in the analysis, the median hourly wage of public sector employees is \pounds 9.68, which is 29 per cent higher than the \pounds 7.51 that is the median hourly wage employees in the private sector.  The wage distributions on a log scale are shown in Figure \ref{fig:density}.  The standard deviation of log hourly wage for private sector employees is $.60$, while it is $.53$ for the public sector.  The lower dispersion of wages in the public sector is a consistent finding of previous research, generally explained by reference to the high levels of remuneration earned by the top earners in private sector occupations such as banking.
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[scale=.5]{Density.pdf}
+    \caption{Kernel density estimates of the distribution of public and private sector wages\label{fig:density}}
+\end{figure}
+
+A better estimate of the public sector pay premium can be obtained by using multilevel regression.  Using this method gives an estimate of the public sector pay premium of $20.3$ per cent.  If we include dummy variables for year and also interact these dummies with the sector dummy variable, we obtain estimates of the change in the premium over time.  These results are summarised in Figure \ref{fig:premium}, which shows that the public sector pay premium declined during the 1990s, but has been reasonably constant since the turn of the century.
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[scale=.5]{Premium.pdf}
+    \caption{How the public sector pay premium has changed over time\label{fig:premium}}
+\end{figure}
+
+
+
+Previous studies have shown that there is a bigger difference between the public and private sector earnings of women than men.  Figure \ref{fig:densitysex} shows the distributions of log hourly wages by sector and sex.  The public sector pay premium for women is much higher than that enjoyed by men, at 39.2 per cent and 18.5 per cent, respectively.
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[scale=.5]{DensitySex.pdf}
+    \caption{Kernel density estimates of the distribution of public and private sector wages split by sex\label{fig:densitysex}}
+\end{figure}
+
+
+\section{Regression results}
+The set of estimates shown in Table \ref{tab:baseline} are from random intercept regressions with the natural log of hourly wages as dependent variable and only indicator of public sector status, sex, and the set of wave fixed effects included as regressors, although these are not shown in the table.  The difference between the average earnings of men and women in the private and public sectors in each socio-economic group is shown graphically in figure \ref{fig:base}. The percentage pay premiums are shown in table \ref{tab:baseprem}.
+
+The pay premiums shown in the table tend to be largest among the lower paid
+members of the BHPS. In particular, a pay premium of \pounds $0.59$ per hour is enjoyed by personal service workers in the public sector over their private sector counterparts,
+which is 18 per cent. The smallest pay premium is earned by intermediate non-manual
+workers, a group that includes teachers and nurses. Their public sector pay premium
+is \pounds $0.27$ or 4.3 per cent. The only group of employees that experiences a pay penalty in
+the public sector are professionals. The penalty is \pounds $0.37$ or 4.4 per cent for working in
+the public sector.
+
+However, these estimates do not control for a number of important characteristics
+that are likely to affect earnings and which also may well differ between the public and
+private sectors. In Table \ref{tab:full}, estimates of random intercept models are shown that control
+for sex, age, education, seniority, and the proportion of people in an occupation that are
+women or trade union members, respectively. Including these controls results in a reduction in the estimated size of the public sector pay premiums (or penalty) compared to those shown in table \ref{tab:baseline}.  The largest hourly pay premium is now that of \pounds 0.57 (20
+per cent) experienced by semi-skilled manual workers, followed by manual foremen
+(\pounds 0.61, 17 per cent), personal service workers (\pounds 0.32, 12.5 per cent) and unskilled manual
+workers (\pounds 0.38, 12.3 per cent). Once again, we see that more highly paid groups experience a smaller wage premium and, indeed, the estimated wage penalty experienced by professional workers increases to \pounds 0.41 (9.5 per cent).
+
+The size of the difference between the sectors, and particularly how this difference
+varies between men and women, is easier to see if we calculate estimate pay premiums and display them graphically. These are shown in Figure \ref{fig:full}.
+
+\begin{table}[tb]
+\caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:baseline}}
+\subtable{%
+\begin{tabularx}{\textwidth}{lcccccc}
+\toprule
+            &Personal service   &Unskilled &Junior      &Semi-skilled   &Skilled \\
+            & workers           &manual    &non-manual  & manual        &manual \\
+\midrule
+Constant	&1.06 	            &1.16 	   &1.32	  	  &1.28 	        &1.31\\
+					&(.025)	            &(.027)	   &(.012)	    &(.017)	        &(.028)\\
+Public sector&.230		        &.127	   	 &.126			  &.221				    &.223\\
+					&(.014)	            &(.020)	   &(.010)	    &(.017)	        &(.069)\\
+Male			&.053							  &.179			 &.145			  &.251					  &.265\\
+					&(.018)							&(.019)		 &(.01)				&(.013)					&(.026)\\
+Public sector & -.048					&-.010		 &.112			  &-.180					&-.188\\
+\quad $\times$ male &(.045)		&(.036)		 &(.019)			&(.024)					&(.071)\\
+\midrule
+N					&8377  	            &4471  	   &25491       &10922 	        &11568    \\
+Deviance	&8890.4	            &3570.5	   &20774.6     &7301.9	        &9492.0\\
+\bottomrule
+\end{tabularx}}
+
+\subtable{%
+\begin{tabularx}{\textwidth}{lccccc}
+\toprule
+			&Foreman            & Manager, &Intermediate&Manager,       &Professional\\
+			&manual             & small    & non-manual	& large \\
+\midrule
+Constant	&1.42	            &1.63	   	 &1.71	   	  &1.82	        	&1.95\\
+					&(.026)	          &(.029)	   &(.017)	    &(.020)	        &(.032)\\
+Public sector&.175 	        &.304      &.104     		&.196 	        &.043\\
+            &(.040)         &(.033)	   &(.011)	    &(.019)	        &(.031)\\
+Male				&.418						&.273			 &.217				&.298					  &.159\\
+						&(.022)					&(.022)		 &(.016)			&(.018)					&(.030)\\
+Public sector &-.131				&-.166		 &-.085			  &-.156					&.001\\
+\quad $\times$ male&(.046)  &(.052)		 &(.019)			&(.027)					&(.039)\\
+\midrule
+N 		  	&4909              	&6118      &16119    	&10754          &5041\\
+Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+% latex table generated in R 2.14.2 by xtable 1.7-0 package
+% Wed Mar 14 12:25:16 2012
+\begin{table}[ht]
+\caption{Percentage public sector premiums for men and women in each socio-economic group \label{tab:baseprem}}
+\begin{center}
+\begin{tabular}{llr}
+  \toprule
+  Socio-economic group & Sex & Premium (\%) \\
+  \midrule
+	Personal service & Men & 19.94 \\
+  Personal service & Women & 25.85 \\
+  Unskilled manual & Men & 12.38 \\
+  Unskilled manual & Women & 13.50 \\
+  Junior non-manual & Men & 26.97 \\
+  Junior non-manual & Women & 13.48 \\
+  Semi-skilled manual & Men & 4.25 \\
+  Semi-skilled manual & Women & 24.77 \\
+  Skilled manual & Men & 3.59 \\
+  Skilled manual & Women & 24.99 \\
+  Foreman manual & Men & 4.57 \\
+  Foreman manual & Women & 19.15 \\
+  Managers,small & Men & 14.73 \\
+  Managers,small & Women & 35.46 \\
+  Int. non-manual& Men & 1.94 \\
+  Int. non-manual& Women & 10.99 \\
+  Managers,large & Men & 4.01 \\
+  Managers,large & Women & 21.62 \\
+  Professionals& Men & 4.36 \\
+  Professional & Women & 4.38 \\
+   \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\begin{table}[tb]
+    \caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:full}}
+    \begin{tabularx}{\textwidth}{Yccccc}
+    \toprule
+    &Personal service&Unskilled&Junior &Semi-skilled&Skilled \\
+    & workers        &manual   &non-manual & manual &manual \\
+    \midrule
+    Constant			&	.101 	&.315		&	.013	&	.306	&	-.613\\
+    							&(.050)	&(.057)	&(.028)	&(.039)	&(.047)\\
+    Public sector	&.095		&.089		&	.053	&	.183	&	.193\\
+    							&(.015)	&(.019)	&(.009)	&(.017)	&(.060)\\
+    Male					&	.107	&	.229	&	.173	&	.260	&	.301\\
+    							&(.017)	&(.018)	&(.010)	&(.012)	&(.022)\\
+    Public sector &-.025	&	-.033	&	.068	&-.165	&	-.160\\
+    \quad $\times	$ Male%
+    							&(.043)	&(.034)	&(.017)	&(.023)&(.062)\\
+    Age						&	.048	&	.042	&	.066	&	.049	&	.099\\
+    							&(.003)	&(.003)	&(.001)	&(.002)	&(.002)\\
+    Age squared		&-.523	&	-.469	&	-.757	&-.556	&	-1.13\\
+    \quad (in thousands)%	
+    							&(.034)	&(.032)	&(.019)	&(.024)&(.026)\\
+    Secondary 		&	.140	&	.081	&	.158	&	.103	&	.098\\
+    \quad education&(.018)&(.018)	&(.013)	&(.013)	&(.016)\\
+    Tertiary			&	.264	&.128		&	.324	&	.183	&	.275\\
+    \quad education&(.025)&(.044)	&(.015)	&(.023)	&(.026)\\
+    Seniority			&	.002	&.001		&	.005	&	.005	&	.006\\
+    							&(.001)	&(.001)	&(.001)	&(.001)	&(.001)\\
+    \midrule
+    Std. Dev. Constant&	.259&	.268&	.311	&	.292	&	.331\\
+    Std. Dev. Residual&	.341&	.274&	.276	&	.253	&	.259\\
+    N								  &8207 &	4392&	25082	&10674	&	11366\\
+    Individuals				&	2975&	1944&	7278	&	3862	&	3334\\
+    Deviance			&	8088.9&	3029.1&	17128.1&6114.0&6950.4\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[t]
+    \begin{tabularx}{\textwidth}{Yccccc}
+    \toprule
+    &Foreman& Manager,&	Intermediate&	Manager,&	Professional\\
+    &manual & small & non-manual & large \\
+    \midrule
+    Constant				&	.336	&	.508	&	-.027	&	.003	&	.045\\
+    								&(.070)	&(.077)	&(.047)	&(.066)	&(.094)\\
+    Public sector		&	.154	&	.168	&	.052	& .090	&-.053\\
+    								&(.038)	&(.032)	&(.010)	&(.018)	&(.029)\\
+    Male						&	.400	&	.235	&	.200	&	.238	&	.057\\
+    								&(.021)	&(.020)	&(.014)	&(.017)	&(.027)\\
+    Public sector		&	-.141	&	-.113	&	-.092	&	-.113	&	.057\\
+    \quad $\times$ Male%
+    								&(.044)&(.049)	&(.017)	&(.025)	&(.036)\\
+    Age							&.052		&	.044	&	.074	&	.077	&	.094\\
+    								&(.003)	&(.004)	&(.002)	&(.003)	&(.004)\\
+    Age squared			&	-.584	&	-.433	&	-.783	&-.788	&-.972\\
+    \quad (in thousands)%
+    								&(.040)&(.045)	&(.027)	&(.037)	&(.049)\\
+    Secondary 			&	.101	&	.207	&	.233	&	.193	&	.007\\
+    \quad education	&(.019)	&(.031)	&(.022)	&(.025)	&(.054)\\
+    Tertiary				&	.247	&	.473	&	.454	&	.415	&	.155\\
+    \quad education	&(.027)	&(.034)	&(.023)	&(.026)	&(.052)\\
+    Seniority				&	.002	&	.001	&	.003	&	-.001	&	-.002\\
+    								&(.001)	&(.001)	&(.001)	&(.001)	&(.001)\\
+    \midrule
+    Std. Dev. Constant&	.301&	.408	&	.332	&	.375	&	.358\\
+    Std. Dev. Residual&	.207&	.285	&	.245	&	.213	&	.242\\
+    N									&	4820&	6051	&15899	&	10667	&4995\\
+    Individuals				&	1952&	2514	&4551		&	3236	&1614\\
+    Deviance					&1647.2&5944.9&8372.9 &4130.3 &2845.8\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+
+
+% latex table generated in R 2.14.2 by xtable 1.7-0 package
+% Wed Mar 14 12:33:57 2012
+\begin{table}[ht]
+    \caption{Percentage public sector premiums for men and women in each socio-economic group. \label{tab:fullprem}}
+    \begin{center}
+    \begin{tabular}{llr}
+      \toprule
+     Socio-economic group & Sex & Premium (\%) \\
+      \midrule
+    Personal service & Men & 7.27 \\
+    Personal service & Women & 10.01 \\
+    Unskilled manual & Men & 5.74 \\
+    Unskilled manual & Women & 9.28 \\
+    Junior non-manual & Men & 12.93 \\
+    Junior non-manual & Women & 5.49 \\
+    Semi-skilled manual& Men & 1.83 \\
+    Semi-skilled manual & Women & 20.13 \\
+    Skilled manual & Men & 3.27 \\
+    Skilled manual & Women & 21.23 \\
+    Foreman manual & Men & 1.34 \\
+    Foreman manual & Women & 16.66 \\
+    Managers,small & Men & 5.60 \\
+    Managers,small & Women & 18.27 \\
+    Int. non-manual& Men & -3.96 \\
+    Int. non-manual& Women & 5.29 \\
+    Managers,large & Men & -2.27 \\
+    Managers,large & Women & 9.47 \\
+    Professionals & Men & 0.46 \\
+    Professionals & Women & -5.13 \\
+       \bottomrule
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{figure}
+    \includegraphics[scale=.7,angle=90]{BasePremium.pdf}
+    \caption{Estimated public sector premiums for men and women showing 95 per cent
+    confidence intervals.\label{fig:base}}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[scale=.7,angle=90]{FullPremium.pdf}
+    \caption{Estimated pay premiums controlling for age, quali?cations and seniority,
+    showing 95 per cent confidence intervals.\label{fig:full}}
+\end{figure}
+
+
+\section{Time variation in the premium}
+
+\begin{comment}
+Not sure whether to include a discussion of this or not.
+\end{comment}
+
+\begin{table}[ht]
+    \caption{Tests of time invariance. \label{tab:time}}
+    \begin{center}
+    \begin{tabular}{lrr}
+    \toprule
+    Socio-economic group & Chi-square & p-value \\
+    \midrule
+    Personal service & 31.5 & .017 \\
+    Unskilled manual & 13.3 & .71 \\
+    Junior non-manual & 28.7 & .037 \\
+    Semi-skilled manual & 22.5 & .167 \\
+    Skilled manual & 29.8 & .028 \\
+    Foreman manual & 10.5 & .88 \\
+    Managers, small & 21.3 & .21 \\
+    Int. non-manual & 43.6 & $ < .01 $\\
+    Managers, large&30.3 & .024 \\
+    Professionals & 52.2 & $< .01$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{figure}[ht]
+    \includegraphics[scale=.7,angle=90]{TimeVariation.pdf}
+    \caption{Time variation in the public sector premium. \label{fig:time}}
+\end{figure}
+
+\clearpage
+\bibliography{Employment}
+\end{document}
