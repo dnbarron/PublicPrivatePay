@@ -1,10 +1,10 @@
 # Analysis for Public Private Pay paper
 
 #library(effects)
+library(xtable)
 library(ggplot2)
 library(car)
 library(arm)
-
 
 #setwd("c:/documents and settings/dbarron/my documents/financial cost of caring")
 #load(".RData")
@@ -12,6 +12,15 @@ library(arm)
 #dta3 <- read.table("dta3.txt")
 
 dta3 <- read.table("dta4.txt")
+
+xtable(xtabs(~jbseg,dta3),digits=0)
+
+segs <- c(14,19,9,17,18,6,11,8,10,15)
+
+wgs <- tapply(dta3$hrwage,dta3$jbseg,mean,na.rm=TRUE)
+ix <- order(wgs)
+wgs[segs]
+xtable(data.frame(wgs[segs]),digits=2)
 
 ##########################################################
 # This section creates the Public/Private sector factor
@@ -163,33 +172,52 @@ gd + geom_line() + scale_y_continuous(name="Public sector premium (%)") + theme_
 
 ##############
 ## REGRESSIONS in the paper
+#####################################################
 
-zz <- textConnection("PublicResultsBase2","w")
+##########################
+## Results in Table 2 and 3
+################################
+zz <- textConnection("PublicResultsBase28.3.12","w")
 sink(zz)
-op <- matrix(NA, ncol=3,nrow=length(segs))
+op <- matrix(NA, ncol=4,nrow=length(segs))
 rownames(op) <- lv.seg[segs]
-colnames(op) <- c("Private","Public","Public premium (%)")
-effs.b <- matrix(, ncol=6)
-colnames(effs.b) <-  c("lhrwage", "lower",   "upper",   "Sex",     "Sector",  "SEG" )
+colnames(op) <- c("Constant","Public","Male","Male x male")
+#effs.b <- matrix(, ncol=6)
+#colnames(effs.b) <-  c("lhrwage", "lower",   "upper",   "Sex",     "Sector",  "SEG" )
 
 for (i in 1:length(segs)){
       seg6 <- dta3$jbseg == lv.seg[segs[i]]
-      seg.re <- lmer(lhrwage ~ PrivateSect * sex + wave + (1|pid) , data=dta3, subset=ss&seg6)
+      seg.re <- lmer(lhrwage ~ PrivateSect * sex + fwave + (1|pid) , data=dta3, subset=ss&seg6)
       cat("\n",date(),lv.seg[segs[i]],"\n",sep="\n")
       display(seg.re, digits=3)
-#      b <- fixef(seg.re)
-#      op[i,1] <- exp(b[1])
-#      op[i,2] <- exp(b[1] + b[2])
-#      op[i,3] <- exp(b[2])/exp(b[1])
-#      efft <- effect("PrivateSect:sex",seg.re, transformation=list(link=log,inverse=exp),
-#              xlevels=list(wave=18))
-#      tmp <- data.frame(lhrwage=efft$fit,lower=efft$lower,upper=efft$upper,Sex=gl(2,2,labels=c("Female","Male")),Sector=gl(2,1,4,labels=c("Private","Public")),SEG=lv.seg[segs[i]])
-#      effs.b <- rbind(data.frame(effs.b),tmp)
+      b <- fixef(seg.re)
+     op[i,] <- b[c(1:3,21)]
+#     efft <- effect("PrivateSect:sex",seg.re, transformation=list(link=log,inverse=exp),
+#             xlevels=list(wave=18))
+#     tmp <- data.frame(lhrwage=efft$fit,lower=efft$lower,upper=efft$upper,Sex=gl(2,2,labels=c("Female","Male")),Sector=gl(2,1,4,labels=c("Private","Public")),SEG=lv.seg[segs[i]])
+#     effs.b <- rbind(data.frame(effs.b),tmp)
 }
 
 sink()
 close(zz)
-capture.output(cat(PublicResultsBase2,sep="\n"),file="PublicResultsBase2.txt")
+capture.output(cat(PublicResultsBase28.3.12,sep="\n"),file="PublicResultsBase28.3.12.txt")
+
+################
+## Calculate percentage pay premiums for table 3
+#################################
+men.pv <- exp(op[,1] + op[,3])
+men.pub <- exp(op[,1] + op[,3] + op[,2] + op[,4])
+women.pv <- exp(op[,1] )
+women.pub <- exp(op[,1] + op[,2] )
+men.prem <- matrix(100*(men.pub-men.pv)/men.pv,ncol=1)
+rownames(men.prem) <- lv.seg[segs]
+wom.prem <- matrix(100*(women.pub-women.pv)/women.pv,ncol=1)
+rownames(wom.prem) <- rownames(men.prem)
+prem <- gdata::interleave(men.prem,wom.prem)
+sex <- gl(2,1,20,labels=c("Men","Women"))
+prems <- data.frame(rownames(prem),sex,prem)
+xtable(prems,digits=2)
+
 
 effs.b <- effs.b[-1,]
 

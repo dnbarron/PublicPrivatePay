@@ -150,7 +150,7 @@ Socio-economic group & Frequency \\
   Professional self-employed & 1603 \\
   \textbf{Semi-skilled manual workers} & 12528 \\
   \textbf{Skilled manual workers} & 13079 \\
-  \textbf{Unskilled manual workers} & 5192 \\ 
+  \textbf{Unskilled manual workers} & 5192 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -160,10 +160,9 @@ We carry out our regressions on different socio-economic groups (SEG) separately
 
 The model of wages that we estimate is a random intercept model, as shown in equation \eqref{eq:wage}.
 
-
 \begin{gather}\label{eq:wage}
-y_{it} = x_{it} \beta + \alpha_i + u_{it};\\
-\alpha_i \sim N(0,\sigma_\alpha^2); \notag\\
+y_{it} = x_{it} \beta + \alpha_i + u_{it}; \notag\\
+\alpha_i \sim N(0,\sigma_\alpha^2); \\
 u_{it} \sim N(0,\sigma_u^2),\notag
 \end{gather}
 where $y_{it}$ is the usual log hourly wage of employee $i$ in year $t$, $x_{it}$ are explanatory variables, $\beta$ is a vector of regression parameters to be estimated, and $\alpha$ and $u$ are error terms with the properties shown.
@@ -171,7 +170,29 @@ where $y_{it}$ is the usual log hourly wage of employee $i$ in year $t$, $x_{it}
 Explanatory variables include a measure of the highest level of education obtained by the employee (secondary school qualification or tertiary education qualification, with no qualification being the excluded category), the number of years the employee has been in his or her current job, age in years and its square, dummy variables for the wave of the survey, sex, an indicator of whether the employee works in the public sector, and an interaction between sex and public sector.  When testing for stability of the public sector pay gap over time we also included interaction between the wave dummies and the public sector indicator.  Estimates were obtained using the \texttt{lmer} function from the \texttt{lme4} package in R \citep{R2011,lme2011}
 
 \section{Descriptive statistics}
-Over the full 18 waves included in the analysis, the median hourly wage of public sector employees is \pounds 9.68, which is 29 per cent higher than the \pounds 7.51 that is the median hourly wage employees in the private sector.  The wage distributions on a log scale are shown in Figure \ref{fig:density}.  The standard deviation of log hourly wage for private sector employees is $.60$, while it is $.53$ for the public sector.  The lower dispersion of wages in the public sector is a consistent finding of previous research, generally explained by reference to the high levels of remuneration earned by the top earners in private sector occupations such as banking.
+Over the full 18 waves included in the analysis, the median hourly wage of public sector employees is \pounds 9.68, which is 29 per cent higher than the \pounds 7.51 that is the median hourly wage employees in the private sector.  The wage distributions on a log scale are shown in Figure \ref{fig:density}.  The standard deviation of log hourly wage for private sector employees is $.60$, while it is $.53$ for the public sector.  The lower dispersion of wages in the public sector is a consistent finding of previous research, generally explained by reference to the high levels of remuneration earned by the top earners in private sector occupations such as banking.  The mean hourly earnings of the ten socio-economic groups are shown in table \ref{tab:wages}.
+
+\begin{table}
+\caption{Mean hourly earnings of each socio-economic group \label{tab:wages}}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Socio-economic group & Mean hourly wage (\pounds)\\
+\midrule
+  Personal service workers & 5.82 \\
+  Unskilled manual workers & 5.76 \\
+  Junior non-manual & 7.46 \\
+  Semi-skilled manual workers & 7.10 \\
+  Skilled manual workers & 8.63 \\
+  Foreman manual & 9.39 \\
+  Managers, small & 11.73 \\
+  Intermediate non-manual & 12.41 \\
+  Managers, large & 16.04 \\
+  Professional employees & 15.69 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 \begin{figure}[tb]
     \centering
@@ -199,7 +220,9 @@ Previous studies have shown that there is a bigger difference between the public
 The set of estimates shown in Table \ref{tab:baseline} are from random intercept regressions with the natural log of hourly wages as dependent variable and only indicator of public sector status, sex, and the set of wave fixed effects included as regressors, although these are not shown in the table.  The difference between the average earnings of men and women in the private and public sectors in each socio-economic group is shown graphically in figure \ref{fig:base}. The percentage pay premiums are shown in table \ref{tab:baseprem}.
 
 The pay premiums shown in the table tend to be largest among the lower paid
-members of the BHPS. In particular, a pay premium of \pounds $0.59$ per hour is enjoyed by personal service workers in the public sector over their private sector counterparts,
+members of the BHPS, although the exception are managers in small establishments. The largest pay premium---35.5 per cent---is enjoyed by female public sector employees in this SEG.
+
+ A pay premium of \pounds $0.59$ per hour is enjoyed by personal service workers in the public sector over their private sector counterparts,
 which is 18 per cent. The smallest pay premium is earned by intermediate non-manual
 workers, a group that includes teachers and nurses. Their public sector pay premium
 is \pounds $0.27$ or 4.3 per cent. The only group of employees that experiences a pay penalty in
@@ -219,6 +242,7 @@ varies between men and women, is easier to see if we calculate estimate pay prem
 
 \begin{table}[tb]
 \caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:baseline}}
+\begin{center}
 \begin{tabular}{lcccccc}
 \toprule
             &Personal service   &Unskilled &Junior      &Semi-skilled   &Skilled \\
@@ -258,10 +282,15 @@ N 		  	&4909              	&6118      &16119    	&10754          &5041\\
 Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
 \bottomrule
 \end{tabular}
+\end{center}
 \end{table}
 
-% latex table generated in R 2.14.2 by xtable 1.7-0 package
-% Wed Mar 14 12:25:16 2012
+\begin{figure}[ht]
+    \includegraphics[scale=.7,angle=90]{BasePremium.pdf}
+    \caption{Estimated public sector premiums for men and women showing 95 per cent
+    confidence intervals.\label{fig:base}}
+\end{figure}
+
 \begin{table}[ht]
 \caption{Percentage public sector premiums for men and women in each socio-economic group \label{tab:baseprem}}
 \begin{center}
@@ -269,27 +298,27 @@ Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
   \toprule
   Socio-economic group & Sex & Premium (\%) \\
   \midrule
-	Personal service & Men & 19.94 \\
-  Personal service & Women & 25.85 \\
-  Unskilled manual & Men & 12.38 \\
-  Unskilled manual & Women & 13.50 \\
-  Junior non-manual & Men & 26.97 \\
-  Junior non-manual & Women & 13.48 \\
-  Semi-skilled manual & Men & 4.25 \\
-  Semi-skilled manual & Women & 24.77 \\
-  Skilled manual & Men & 3.59 \\
-  Skilled manual & Women & 24.99 \\
-  Foreman manual & Men & 4.57 \\
-  Foreman manual & Women & 19.15 \\
-  Managers,small & Men & 14.73 \\
-  Managers,small & Women & 35.46 \\
-  Int. non-manual& Men & 1.94 \\
-  Int. non-manual& Women & 10.99 \\
-  Managers,large & Men & 4.01 \\
-  Managers,large & Women & 21.62 \\
-  Professionals& Men & 4.36 \\
-  Professional & Women & 4.38 \\
-   \bottomrule
+   Personal service & Men & 19.94 \\
+   Personal service & Women & 25.85 \\
+   Unskilled manual & Men & 12.38 \\
+   Unskilled manual & Women & 13.50 \\
+   Junior non-manual & Men & 26.97 \\
+   Junior non-manual & Women & 13.48 \\
+   Semi-skilled manual & Men & 4.25 \\
+   Semi-skilled manual & Women & 24.77 \\
+   Skilled manual & Men & 3.59 \\
+   Skilled manual & Women & 24.99 \\
+   Foreman manual & Men & 4.57 \\
+   Foreman manual & Women & 19.15 \\
+   Managers ,small & Men & 14.73 \\
+   Managers ,small & Women & 35.46 \\
+   Intermediate non-manual& Men & 1.94 \\
+   Intermediate non-manual & Women & 10.99 \\
+   Managers, large & Men & 4.01 \\
+   Managers, large & Women & 21.62 \\
+   Professional & Men & 4.36 \\
+   Professional & Women & 4.38 \\ 
+\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
@@ -367,45 +396,37 @@ Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
     \end{tabularx}
 \end{table}
 
-% latex table generated in R 2.14.2 by xtable 1.7-0 package
-% Wed Mar 14 12:33:57 2012
 \begin{table}[ht]
     \caption{Percentage public sector premiums for men and women in each socio-economic group. \label{tab:fullprem}}
     \begin{center}
     \begin{tabular}{llr}
-      \toprule
+\toprule
      Socio-economic group & Sex & Premium (\%) \\
-      \midrule
-    Personal service & Men & 7.27 \\
-    Personal service & Women & 10.01 \\
-    Unskilled manual & Men & 5.74 \\
-    Unskilled manual & Women & 9.28 \\
-    Junior non-manual & Men & 12.93 \\
-    Junior non-manual & Women & 5.49 \\
-    Semi-skilled manual& Men & 1.83 \\
-    Semi-skilled manual & Women & 20.13 \\
-    Skilled manual & Men & 3.27 \\
-    Skilled manual & Women & 21.23 \\
-    Foreman manual & Men & 1.34 \\
-    Foreman manual & Women & 16.66 \\
-    Managers,small & Men & 5.60 \\
-    Managers,small & Women & 18.27 \\
-    Int. non-manual& Men & -3.96 \\
-    Int. non-manual& Women & 5.29 \\
-    Managers,large & Men & -2.27 \\
-    Managers,large & Women & 9.47 \\
-    Professionals & Men & 0.46 \\
-    Professionals & Women & -5.13 \\
-       \bottomrule
+\midrule
+  Personal service & Men & 7.27 \\
+  Personal service & Women & 10.01 \\
+  Unskilled manual & Men & 5.74 \\
+  Unskilled manual & Women & 9.28 \\
+  Junior non-manual & Men & 12.93 \\
+  Junior non-manual & Women & 5.49 \\
+  Semi-skilled manual& Men & 1.83 \\
+  Semi-skilled manual & Women & 20.13 \\
+  Skilled manual & Men & 3.27 \\
+  Skilled manual & Women & 21.23 \\
+  Foreman manual & Men & 1.34 \\
+  Foreman manual & Women & 16.66 \\
+  Managers, small & Men & 5.60 \\
+  Managers, small & Women & 18.27 \\
+  Intermediate non-manual& Men & -3.96 \\
+  Intermediate non-manual & Women & 5.29 \\
+  Managers, large & Men & -2.27 \\
+  Managers, large & Women & 9.47 \\
+  Professional& Men & 0.46 \\
+  Professional& Women & -5.13 \\
+\bottomrule
     \end{tabular}
     \end{center}
 \end{table}
-
-\begin{figure}
-    \includegraphics[scale=.7,angle=90]{BasePremium.pdf}
-    \caption{Estimated public sector premiums for men and women showing 95 per cent
-    confidence intervals.\label{fig:base}}
-\end{figure}
 
 \begin{figure}
     \includegraphics[scale=.7,angle=90]{FullPremium.pdf}
