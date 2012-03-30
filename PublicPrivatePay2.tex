@@ -156,7 +156,7 @@ Socio-economic group & Frequency \\
 \end{center}
 \end{table}
 
-We carry out our regressions on different socio-economic groups (SEG) separately. The socio-economic group variable that we use is a 19 category scale. The descriptions of the categories and the distribution of people in them are shown in table \ref{tab:SEG}. We used the SEG classification because it is it intermediate in complexity between the older six-member Social Class (SC) and the more recent National Statistics Socio-economic classification (NS-SEC).  A comparison of these three classification scheme is available on the Office of National Statistics website \citep{ONSnd}. Classification of BHPS respondents into SEGs is performed using the Standard Occupational Classification (SOC) of their job, as described in \citet{Taylor2010}.
+We carry out our regressions on different socio-economic groups (SEG) separately. The socio-economic group variable that we use is a 19 category scale. The descriptions of the categories and the distribution of people in them are shown in table \ref{tab:SEG}. Examples of occupations in some of these socio-economic groups are shown in table \ref{tab:occs}. We used the SEG classification because it is it intermediate in complexity between the older six-member Social Class (SC) and the more recent National Statistics Socio-economic classification (NS-SEC).  A comparison of these three classification scheme is available on the Office of National Statistics website \citep{ONSnd}. Classification of BHPS respondents into SEGs is performed using the Standard Occupational Classification (SOC) of their job, as described in \citet{Taylor2010}.
 
 The model of wages that we estimate is a random intercept model, as shown in equation \eqref{eq:wage}.
 
@@ -217,28 +217,12 @@ Previous studies have shown that there is a bigger difference between the public
 \end{figure}
 
 \section{Regression results}
-The set of estimates shown in Table \ref{tab:baseline} are from random intercept regressions with the natural log of hourly wages as dependent variable and only indicator of public sector status, sex, and the set of wave fixed effects included as regressors, although these are not shown in the table.  The difference between the average earnings of men and women in the private and public sectors in each socio-economic group is shown graphically in figure \ref{fig:base}. The percentage pay premiums are shown in table \ref{tab:baseprem}.
+The set of estimates shown in Table \ref{tab:baseline} are from random intercept regressions with the natural log of hourly wages as dependent variable and only indicator of public sector status, sex, and the set of wave fixed effects included as regressors, although these last effects are not shown in the table.  The difference between the average earnings of men and women in the private and public sectors in each socio-economic group is shown graphically in figure \ref{fig:base}. The percentage pay premiums are shown in table \ref{tab:baseprem}.
 
 The pay premiums shown in the table tend to be largest among the lower paid
-members of the BHPS, although the exception are managers in small establishments. The largest pay premium---35.5 per cent---is enjoyed by female public sector employees in this SEG.
+members of the BHPS, although managers in small establishments are an exception: the largest pay premium---35.5 per cent---is enjoyed by female public sector employees in this SEG.  Perhaps the most striking feature of these results
+is the discrepancy between the pay gaps experienced by men and women.  The estimated public sector pay premiums experienced by men are not statistically significant for three SEGs, only barely sigificant in a further three.  Women, on the hand, experience statistically significant wage premiums in all but one SEG: professionals.
 
- A pay premium of \pounds $0.59$ per hour is enjoyed by personal service workers in the public sector over their private sector counterparts,
-which is 18 per cent. The smallest pay premium is earned by intermediate non-manual
-workers, a group that includes teachers and nurses. Their public sector pay premium
-is \pounds $0.27$ or 4.3 per cent. The only group of employees that experiences a pay penalty in
-the public sector are professionals. The penalty is \pounds $0.37$ or 4.4 per cent for working in
-the public sector.
-
-However, these estimates do not control for a number of important characteristics
-that are likely to affect earnings and which also may well differ between the public and
-private sectors. In Table \ref{tab:full}, estimates of random intercept models are shown that control
-for sex, age, education, and seniority, respectively. Including these controls results in a reduction in the estimated size of the public sector pay premiums (or penalty) compared to those shown in table \ref{tab:baseline}.  The largest hourly pay premium is now that of \pounds 1.93 (20
-per cent) experienced by semi-skilled manual workers, followed by manual foremen
-(\pounds 0.61, 17 per cent), personal service workers (\pounds 0.32, 12.5 per cent) and unskilled manual
-workers (\pounds 0.38, 12.3 per cent). Once again, we see that more highly paid groups experience a smaller wage premium and, indeed, the estimated wage penalty experienced by professional workers increases to \pounds 0.41 (9.5 per cent).
-
-The size of the difference between the sectors, and particularly how this difference
-varies between men and women, is easier to see if we calculate estimate pay premiums and display them graphically. These are shown in Figure \ref{fig:full}.
 
 \begin{table}[tb]
 \caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:baseline}}
@@ -310,18 +294,25 @@ Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
    Skilled manual & Women & 24.99 \\
    Foreman manual & Men & 4.57 \\
    Foreman manual & Women & 19.15 \\
-   Managers ,small & Men & 14.73 \\
-   Managers ,small & Women & 35.46 \\
+   Managers, small & Men & 14.73 \\
+   Managers,small & Women & 35.46 \\
    Intermediate non-manual& Men & 1.94 \\
    Intermediate non-manual & Women & 10.99 \\
    Managers, large & Men & 4.01 \\
    Managers, large & Women & 21.62 \\
    Professional & Men & 4.36 \\
-   Professional & Women & 4.38 \\ 
+   Professional & Women & 4.38 \\
 \bottomrule
 \end{tabular}
 \end{center}
 \end{table}
+
+However, these estimates do not control for a number of important characteristics
+that are likely to affect earnings and which also may well differ between the public and
+private sectors. In table \ref{tab:full} we show estimates of random intercept models that control
+for age, education, and seniority in addition to including sex and year fixed effects (again, not shown in the table). These results are displayed graphically in figure \ref{fig:full}. Including these controls results in a reduction in the estimated size of the public sector pay premiums (or penalty) compared to those shown in table \ref{tab:baseline}, as one would expect given what we know about the differences in the public and private sector workforces.  The largest pay premium---21.2 per cent---is enjoyed by female skilled manual workers, although as can be seen clearly in figure \ref{fig:full} the confidence interval around this estimate is large because of the relatively small number of female skilled manual workers in the sample. The premium enjoyed by women semi-skilled manual workers is almost as large at 20.1 percent, and because of the much larger numbers in the SEG this estimate has a much narrower confidence interval.  This size of premium is equivalent to about \pounds $1.60$ per hour, a significant amount of money for this relatively low paid group.
+
+Double-digit public sector premiums are also experienced by women in public service, who work as a foreman in manual occupations and as managers in small establishments.  All of these estimates are statistically significant, as are the smaller premiums enjoyed by women working the intermediate non-manual, junior non-manual, large manager and unskilled manual SEGs.  In fact, the only SEG in which women do not have a statistically significant pay premium is profession employees, where the estimated difference between public and private sector pay is actually negative (that is, there is a pay \emph{penalty} for working in the public sector), although the difference is not statistically significant.
 
 \begin{table}[tb]
     \caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:full}}
@@ -396,6 +387,9 @@ Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
     \end{tabularx}
 \end{table}
 
+Undoubtedly the most striking finding, however, is that for men the public sector pay premium essentially disappears, with the sole exception of men in the junior non-manual SEG.  Indeed, in this SEG men actually experience a higher pay premium than that enjoyed by women (12.9 per cent compared to 5.5 per cent).  In every other group the estimated public sector pay premium for men either is not significantly different from zero or is below zero (that is, there is a public sector pay penalty).  Of course, men are actually earning more than women in all these SEGs; it is just that they do not, with the exception noted above, experience significantly higher pay if they work in the public sector compared to similar men in the private sector.
+
+
 \begin{table}[ht]
     \caption{Percentage public sector premiums for men and women in each socio-economic group. \label{tab:fullprem}}
     \begin{center}
@@ -430,16 +424,11 @@ Deviance	&2016.6	            &6460.7	   &10694.3     &5375.5         &3621.1 \\
 
 \begin{figure}
     \includegraphics[scale=.7,angle=90]{FullPremium.pdf}
-    \caption{Estimated pay premiums controlling for age, quali?cations and seniority,
+    \caption{Estimated pay premiums controlling for age, qualifications and seniority,
     showing 95 per cent confidence intervals.\label{fig:full}}
 \end{figure}
 
-
-\section{Time variation in the premium}
-
-\begin{comment}
-Not sure whether to include a discussion of this or not.
-\end{comment}
+Given the eighteen year period over which the data analysed in this paper were collected, it is important to check for time variation in the size of the public sector premiums and penalties.  To achieve this, interactions between wave indicators and the public sector dummy variable were created.  Full results of these regressions are available from the author.  Tests of a significant improvement in model fit as a result of including these interactions are shown in table \ref{tab:time}.  These show that there is evidence of statistically significant time variation in the size of the public sector premium in six of the SEGs.  However, as figure \ref{fig:time} shows, these differences do not substantially change the patterns discussed above.
 
 \begin{table}[ht]
     \caption{Tests of time invariance. \label{tab:time}}
@@ -467,6 +456,71 @@ Not sure whether to include a discussion of this or not.
     \includegraphics[scale=.7,angle=90]{TimeVariation.pdf}
     \caption{Time variation in the public sector premium. \label{fig:time}}
 \end{figure}
+
+\section{Discussion}
+These results demonstrate that controlling for key indicators of individual human capital, when we compare \emph{male} public and private sector employees in similar occupations most of the difference in earnings that has been frequently reported in previous research disappears.  However, the same is not true of women, and this raises the question, why do women fare so much worse in the private sector than their male counterparts?
+
+Some of the difference may be due to the gendered nature of many occupations.  Since occupations are not evenly distributed between the private and public sectors, if female-dominated occupations are more likely to be found in the private sector, then we might observe this pattern, given that wage levels in female-dominated occupations have been shown to be lower.  To check this we calculated the percentage of the employees in an occupation in our sample that were women.  The mean percentage in the public sector was 63 per cent, while in the private sector is was 45 per cent. Of all the women employees in the sample, 66 per cent worked in the public sector.  So in fact there are more jobs in female-dominated occupations in the public sector than in the private sector.  In a sense this is to be expected; if women can earn more in the public sector while men enjoy no such premium, we would expect a much stronger preference for working in the public sector among women than men.  However, this makes it less likely that the observed public sector premium for women is due to differences in the occupational characteristics of the two sectors.
+
+\begin{db}
+Other ideas?
+\end{db}
+
+\clearpage
+\appendix
+\section{Appendix}
+
+\begin{table}[hb]\caption{Examples of some occupations in selected socio-economic groups \label{tab:occs}}
+\begin{tabular}{ll}
+\toprule
+SOC code & Occupation \\
+\midrule
+\textbf{Personal service} \\
+620 & Chefs, cooks \\
+621--622 & Waiters \& bar staff \\
+650 & Nursery nurses \\
+652 & Teaching assistants \\
+\textbf{Unskilled manual} \\
+929 & Building and civil engineering labourers \\
+931 & Goods porters \\
+941 & Messengers, couriers \\
+%952 & Kitchen porters \\
+958 & Cleaners \\
+\textbf{Junior non-manual} \\
+400 & Civil service administrative officers \\
+401 & Local government clerical officers \\
+%411 & Counter clerks and cashiers \\
+420 & Filing, computer and records clerks \\
+%430 & Other clerks \\
+459 & Secretaries \\
+\textbf{Semi-skilled manual} \\
+441 & Storekeepers, warehousemen \\
+644 & Care assistants\\
+850-859 & Assemblers and line workers \\
+862 & Packers, bottlers, etc. \\
+890--899 & Plant and machine operatives \\
+\textbf{Skilled manual}\\
+500 & Bricklayers, masons \\
+%516 & Metal working production \& maintenance fitters\\
+521 & Electricians \\
+532 & Plumbers \\
+%872 & Drivers of road goods vehicles \\
+873 & Bus drivers \\
+\textbf{Intermediate non-manual}\\
+%132 & Civil service executive officers \\
+230--239 & Tertiary, secondary and primary teachers \\
+%293 & Social workers \\
+%300 & Laboratory technicians\\
+340--341 & Nurses \\
+%380 & Writers, journalists \\
+\textbf{Professional}\\
+200--209 & Scientist \\
+%210--219 & Engineers \\
+240--242 & Judges, barristers, solicitors \\
+%250 & Chartered accountants \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \clearpage
 \bibliography{Employment}

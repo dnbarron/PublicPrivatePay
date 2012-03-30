@@ -77,8 +77,9 @@ dta3$quals <- quals
 tab.f <- xtabs(~jbsoc+sex,dta3)
 prop.f <- tab.f[,1]/rowSums(tab.f)
 prop.f.df <- data.frame(jbsoc=as.numeric(rownames(tab.f)),prop.female=prop.f)
-
-
+mw <- tapply(dta3$hrwage,dta3$jbsoc,median,na.rm=T)
+all.equal(as.numeric(rownames(tab.f)),as.numeric(rownames(mw)))
+cor(prop.f,mw,use="c")
 ########################
 # Proportion in each occupation that are trade union members
 # variable orgmb identifies TU membership
@@ -117,9 +118,11 @@ g  + geom_histogram(aes(y=..density..,fill=PrivateSect[,drop=TRUE]),binwidth=.02
 ## Crosstabs of sector with sex and education
 #############################
 library(descr)
-with(dta2[ss,],CrossTable(PrivateSect,sex))
-with(dta2[ss,],CrossTable(PrivateSect,quals))
-
+with(dta3,CrossTable(PrivateSect,sex))
+with(dta3,CrossTable(PrivateSect,quals))
+summary(aov(prop.female~PrivateSect,dta3))
+by(dta3$prop.female,dta3$PrivateSect,mean,na.rm=T)
+fem.re <- lmer(lhrwage ~ prop.female + (1|pid), dta3)
 ###################################################################
 # REGRESSION MODELS
 ######################################################################
@@ -235,7 +238,7 @@ colnames(effs.all) <- c("lhrwage", "lower",   "upper",   "Sex",     "Sector",  "
 
 for (i in 1:length(segs)){
       seg6 <- dta3$jbseg == lv.seg[segs[i]]
-      seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + quals + jobsen  + wave + (1|pid) , data=dta3, subset=seg6)
+      seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + quals + jobsen  + fwave + (1|pid) , data=dta3, subset=seg6)
       cat("\n",date(),i,lv.seg[segs[i]],"\n",sep="\n")
       display(seg.re, digits=3)
      b <- fixef(seg.re)
@@ -253,7 +256,7 @@ for (i in 1:length(segs)){
 
 sink()
 close(zz)
-capture.output(cat(PublicResults,sep="\n"),file="PublicResultsNew.txt")
+capture.output(cat(PublicResults,sep="\n"),file="PublicResultsFull30.3.12.txt")
 effs.all <- effs.all[-1,]
 
 ggplot(data=effs.all,aes(x=Sector,y=exp(lhrwage),ymin=exp(lower),ymax=exp(upper),colour=Sex)) + facet_wrap(~SEG,scales="free")+ geom_pointrange(size=1) + labs(x="Sector",y="Hourly wage")
@@ -434,3 +437,30 @@ segments(u0tab$u0rank, u0tab$u0 - 1.96*u0tab$u0se, u0tab$u0rank, u0tab$u0 + 1.96
 points(u0tab$u0rank, u0tab$u0, col = "blue")
 
 abline(h = 0, col = "red")
+
+## Add prop.female to model
+
+zz <- textConnection("PublicResultsFem","w")
+sink(zz)
+lv.seg <- levels(dta3$jbseg)
+op3 <- matrix(NA, ncol=6,nrow=length(segs))
+rownames(op3) <- lv.seg[segs]
+colnames(op3) <- c("Private","Public","Male","Public x male","Prem male","Prem female")
+
+for (i in 1:length(segs)){
+  seg6 <- dta3$jbseg == lv.seg[segs[i]]
+  seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + quals + jobsen  + prop.female + fwave + (1|pid) , data=dta3, subset=seg6)
+  cat("\n",date(),i,lv.seg[segs[i]],"\n",sep="\n")
+  display(seg.re, digits=3)
+  b <- fixef(seg.re)
+  op3[i,1] <- exp(b[1])
+  op3[i,2] <- exp(b[2])
+  op3[i,3] <- exp(b[3])
+  op3[i,4] <- exp(b[length(b)])
+  op3[i,5] <- sum(op3[i,1:4])/(op3[i,1]+op3[i,3])
+  op3[i,6] <- (op3[i,1] + op3[i,2])/op3[i,1]
+}
+
+sink()
+close(zz)
+capture.output(cat(PublicResultsFem,sep="\n"),file="PublicResultsFem.txt")
