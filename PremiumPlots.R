@@ -10,18 +10,18 @@ dta3 <- read.table("dta4.txt")
 dta3$fwave <- factor(dta3$wave)
 
 prem.b <- matrix(, ncol=6)
-vn <- c("SEG","Premium","Diff", "Sex", "SEprem", "PremPct" )
+vn <- c("SEC","Premium","Diff", "Sex", "SEprem", "PremPct" )
 colnames(prem.b) <- vn
 prem.b <- data.frame(prem.b)
 segs <- c(14,19,9,17,18,6,11,8,10,15)
-seg <- dta3$jbseg
-lv.seg <- levels(seg)
+sec.rc <- dta3$sec.rc
+secs <- levels(sec.rc)
 ss <- dta3$hrwage > 0
 
-for (i in 1:length(segs)){
-      seg6 <- dta3$jbseg == lv.seg[segs[i]]
+for (i in 1:length(secs)){
+      seg6 <- dta3$sec.rc == secs[i]
       seg.re <- lmer(lhrwage ~ PrivateSect*sex + fwave + (1|pid) , data=dta3, subset=seg6)
-      cat("\n",date(),lv.seg[segs[i]],"\n",sep="\n")
+      cat("\n",date(),secs[i],"\n",sep="\n")
 #      display(seg.re, digits=3)
       b <- fixef(seg.re)
       vc <- vcov(seg.re)
@@ -45,8 +45,8 @@ for (i in 1:length(segs)){
 # Standard error of pub sect premium (log scale) men and women
       se.p.men <- sqrt(vb1 + vb3 + 2*cb1b3)
       se.p.women <- sqrt(vb1)
-      tmp <- data.frame(lv.seg[segs[i]],p.men,d.men,"Men", se.p.men, p.men.pct)
-      tmp2 <- data.frame(lv.seg[segs[i]], p.women,d.women, "Women",se.p.women, p.women.pct )
+      tmp <- data.frame(secs[i],p.men,d.men,"Men", se.p.men, p.men.pct)
+      tmp2 <- data.frame(secs[i], p.women,d.women, "Women",se.p.women, p.women.pct )
       names(tmp) <- vn
       names(tmp2) <- vn
       prem.b <- rbind(prem.b,tmp,tmp2)
@@ -58,7 +58,7 @@ prem.b <- prem.b[-1,]
 #############
 ## Figure 6
 
-g <- ggplot(data=prem.b, aes(x=Sex,y=Premium,ymin=Premium-2*SEprem,ymax=Premium+2*SEprem)) + facet_wrap(~SEG) + geom_pointrange(size=1,colour="blue") + labs(x=NULL,y="Log hourly wage premium in pounds") + geom_hline(aes(yintercept=0),colour="red") + theme_bw()
+g <- ggplot(data=prem.b, aes(x=Sex,y=Premium,ymin=Premium-2*SEprem,ymax=Premium+2*SEprem)) + facet_wrap(~SEC) + geom_pointrange(size=1,colour="blue") + labs(x=NULL,y="Log hourly wage premium in pounds") + geom_hline(aes(yintercept=0),colour="red") + theme_bw()
 pdf("BasePremium.pdf",paper="a4r")
 g
 dev.off()
@@ -73,14 +73,14 @@ xtable(data.frame(prem.b[,c(1,4)],prem.b[,6]*100))
 #######################
 
 prem.f <- matrix(, ncol=7)
-vn <- c("SEG","Premium","Diff","Hat", "Sex", "SEprem", "PremPct" )
+vn <- c("SEC","Premium","Diff","Hat", "Sex", "SEprem", "PremPct" )
 colnames(prem.f) <- vn
 prem.f <- data.frame(prem.f)
 
-for (i in 1:length(segs)){
-      seg6 <- dta3$jbseg == lv.seg[segs[i]]
+for (i in 1:length(secs)){
+      seg6 <- dta3$sec.rc == secs[i]
       seg.re <- lmer(lhrwage ~ PrivateSect*sex + age + agesq.k + quals + jobsen + fwave + (1|pid) , data=dta3, subset=seg6)
-      cat("\n",date(),lv.seg[segs[i]],"\n",sep="\n")
+      cat("\n",date(),secs[i],"\n",sep="\n")
 #      display(seg.re, digits=3)
       b <- fixef(seg.re)
       vc <- vcov(seg.re)
@@ -108,15 +108,15 @@ for (i in 1:length(segs)){
       p.women.pct <- hat.pub.women/hat.pvt.women - 1
       se.p.men <- sqrt(vb1 + vb3 + 2*cb1b3)
       se.p.women <- sqrt(vb1)
-      tmp <- data.frame(lv.seg[segs[i]],p.men,d.men,d.hat.men,"Men", se.p.men, p.men.pct)
-      tmp2 <- data.frame(lv.seg[segs[i]], p.women,d.women,d.hat.women, "Women",se.p.women, p.women.pct )
+      tmp <- data.frame(secs[i],p.men,d.men,d.hat.men,"Men", se.p.men, p.men.pct)
+      tmp2 <- data.frame(secs[i], p.women,d.women,d.hat.women, "Women",se.p.women, p.women.pct )
       names(tmp) <- vn
       names(tmp2) <- vn
       prem.f <- rbind(prem.f,tmp,tmp2)
 }
 prem.f <- prem.f[-1,]
 
-g <- ggplot(data=prem.f, aes(x=Sex,y=Premium,ymin=Premium-2*SEprem,ymax=Premium+2*SEprem)) + facet_wrap(~SEG) + geom_pointrange(size=1,colour="blue") + labs(x=NULL,y="Log hourly wage premiums in pounds") + geom_hline(aes(yintercept=0),colour="red") + theme_bw()
+g <- ggplot(data=prem.f, aes(x=Sex,y=Premium,ymin=Premium-2*SEprem,ymax=Premium+2*SEprem)) + facet_wrap(~SEC) + geom_pointrange(size=1,colour="blue") + labs(x=NULL,y="Log hourly wage premiums in pounds") + geom_hline(aes(yintercept=0),colour="red") + theme_bw()
 pdf("FullPremium.pdf", paper="a4r")
 g
 dev.off()

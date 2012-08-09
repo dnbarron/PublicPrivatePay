@@ -14,17 +14,17 @@ library(arm)
 #dta3 <- read.table("dta3.txt")
 
 dta3 <- read.table("dta4.txt")
-dta3$sec.rc <- sec.rc 
-write.table(dta3,"dta4.txt")
+#dta3$sec.rc <- sec.rc 
+#write.table(dta3,"dta4.txt")
 
-xtable(xtabs(~jbseg,dta3),digits=0)
+xtable(xtabs(~sec.rc,dta3),digits=0)
 
-segs <- c(14,19,9,17,18,6,11,8,10,15)
+secs <- levels(dta3$sec.rc)
 
-wgs <- tapply(dta3$hrwage,dta3$jbseg,mean,na.rm=TRUE)
+wgs <- tapply(dta3$hrwage,dta3$sec.rc,mean,na.rm=TRUE)
 ix <- order(wgs)
-wgs[segs]
-xtable(data.frame(wgs[segs]),digits=2)
+wgs[secs]
+xtable(data.frame(wgs),digits=2)
 
 ##########################################################
 # This section creates the Public/Private sector factor
@@ -55,8 +55,8 @@ dta3$PS.sex <- PS.sex
 ###############
 
 ss <- dta3$hrwage > 0
-seg <- dta3$jbseg
-lv.seg <- levels(seg)
+sec <- dta3$sec.rc
+lv.sec <- levels(sec)
 
 rm(PS.sex,PrivateSect)
 
@@ -135,7 +135,6 @@ dta3$fwave <- factor(dta3$wave)
 
 # These are the SEGs that we analyse (could remove others from data?)
 
-segs <- c(14,19,9,17,18,6,11,8,10,15)
 # Basic premium
 
 base.re <- lmer(lhrwage ~ PrivateSect + fwave + (1|pid), data=dta3)
@@ -184,18 +183,18 @@ gd + geom_line() + scale_y_continuous(name="Public sector premium (%)") + theme_
 ##########################
 ## Results in Table 2 and 3
 ################################
-zz <- textConnection("PublicResultsBase28.3.12","w")
+zz <- textConnection("PublicResultsBase7.8.12","w")
 sink(zz)
-op <- matrix(NA, ncol=4,nrow=length(segs))
-rownames(op) <- lv.seg[segs]
+op <- matrix(NA, ncol=4,nrow=length(secs))
+rownames(op) <- secs
 colnames(op) <- c("Constant","Public","Male","Male x male")
 #effs.b <- matrix(, ncol=6)
 #colnames(effs.b) <-  c("lhrwage", "lower",   "upper",   "Sex",     "Sector",  "SEG" )
 
-for (i in 1:length(segs)){
-      seg6 <- dta3$jbseg == lv.seg[segs[i]]
+for (i in 1:length(secs)){
+      seg6 <- dta3$sec.rc == secs[i]
       seg.re <- lmer(lhrwage ~ PrivateSect * sex + fwave + (1|pid) , data=dta3, subset=ss&seg6)
-      cat("\n",date(),lv.seg[segs[i]],"\n",sep="\n")
+      cat("\n",date(),secs[i],"\n",sep="\n")
       display(seg.re, digits=3)
       b <- fixef(seg.re)
      op[i,] <- b[c(1:3,21)]
@@ -207,7 +206,7 @@ for (i in 1:length(segs)){
 
 sink()
 close(zz)
-capture.output(cat(PublicResultsBase28.3.12,sep="\n"),file="PublicResultsBase28.3.12.txt")
+capture.output(cat(PublicResultsBase7.8.12,sep="\n"),file="PublicResultsBase7.8.12.txt")
 
 ################
 ## Calculate percentage pay premiums for table 3
@@ -231,19 +230,19 @@ effs.b <- effs.b[-1,]
 ggplot(data=effs.b,aes(x=Sector,y=exp(lhrwage),ymin=exp(lower),ymax=exp(upper))) + facet_wrap(~SEG,scales="free")+ geom_pointrange(size=1) + labs(x="Sector",y="Hourly wage")
 dta3$wave <- factor(dta3$wave)
 
-zz <- textConnection("PublicResults","w")
+zz <- textConnection("PublicResults7.8.12","w")
 sink(zz)
-lv.seg <- levels(dta3$jbseg)
-op2 <- matrix(NA, ncol=6,nrow=length(segs))
-rownames(op2) <- lv.seg[segs]
+
+op2 <- matrix(NA, ncol=6,nrow=length(secs))
+rownames(op2) <- secs
 colnames(op2) <- c("Private","Public","Male","Public x male","Prem male","Prem female")
 effs.all <- matrix(, ncol=6)
 colnames(effs.all) <- c("lhrwage", "lower",   "upper",   "Sex",     "Sector",  "SEG" )
 
-for (i in 1:length(segs)){
-      seg6 <- dta3$jbseg == lv.seg[segs[i]]
+for (i in 1:length(secs)){
+      seg6 <- dta3$sec.rc == secs[i]
       seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + quals + jobsen  + fwave + (1|pid) , data=dta3, subset=seg6)
-      cat("\n",date(),i,lv.seg[segs[i]],"\n",sep="\n")
+      cat("\n",date(),i,secs[i],"\n",sep="\n")
       display(seg.re, digits=3)
      b <- fixef(seg.re)
      op2[i,1] <- exp(b[1])
@@ -260,7 +259,7 @@ for (i in 1:length(segs)){
 
 sink()
 close(zz)
-capture.output(cat(PublicResults,sep="\n"),file="PublicResultsFull30.3.12.txt")
+capture.output(cat(PublicResults7.8.12,sep="\n"),file="PublicResultsFull7.8.12.txt")
 effs.all <- effs.all[-1,]
 
 ggplot(data=effs.all,aes(x=Sector,y=exp(lhrwage),ymin=exp(lower),ymax=exp(upper),colour=Sex)) + facet_wrap(~SEG,scales="free")+ geom_pointrange(size=1) + labs(x="Sector",y="Hourly wage")
@@ -353,7 +352,7 @@ plot(efft)
 #### Time varying premium?
 dta3$wave <- factor(dta3$wave)
 i <- 1
-seg6 <- dta3$jbseg == lv.seg[segs[i]]
+seg6 <- dta3$sec.rc == secs[i]
 seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + PrivateSect*wave + quals + jobsen + (1|pid) , data=dta3, subset=seg6)
 b <- fixef(seg.re)
 men.prvt <- b[1] + b[3]
@@ -374,16 +373,16 @@ sex <- gl(2,36,labels=c("Men","Women"))
 sector <- gl(2,18,72,labels=c("Private","Public"))
 sex.sector <- gl(4,18,labels=c("Men, Private","Men, Public","Women, Private","Women, Public"))
 wave <- rep(1:18,4)
-tmp.d <- data.frame(SEG=lv.seg[segs[1]],wave=wave,sex,sector,sex.sector,wage=tmp)
-tmp.d.p <- data.frame(SEG=lv.seg[segs[i]],wave=rep(1:18,2),
+tmp.d <- data.frame(SEC=secs[1],wave=wave,sex,sector,sex.sector,wage=tmp)
+tmp.d.p <- data.frame(SEC=secs[i],wave=rep(1:18,2),
             Sex=gl(2,18,labels=c("Men","Women")),premium=tmp.p)
 dta.wv <- tmp.d
 dta.p <- tmp.d.p
 
-for (i in 2:length(segs)){
-      seg6 <- dta3$jbseg == lv.seg[segs[i]]
+for (i in 2:length(secs)){
+      seg6 <- dta3$sec.rc == secs[i]
       seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + PrivateSect*wave + quals + jobsen + (1|pid) , data=dta3, subset=seg6)
-      cat("\n",date(),lv.seg[segs[i]],"\n",sep="\n")
+      cat("\n",date(),secs[i],"\n",sep="\n")
       b <- fixef(seg.re)
       men.prvt <- b[1] + b[3]
       men.pub <- b[1] + b[2] + b[3] + b[26]
@@ -403,15 +402,15 @@ for (i in 2:length(segs)){
       sector <- gl(2,18,72,labels=c("Private","Public"))
       sex.sector <- gl(4,18,labels=c("Men, Private","Men, Public","Women, Private","Women, Public"))
       wave <- rep(1:18,4)
-      tmp.d <- data.frame(SEG=lv.seg[segs[i]],wave=wave,sex,sector,sex.sector,wage=tmp)
-      tmp.d.p <- data.frame(SEG=lv.seg[segs[i]],wave=rep(1:18,2),
+      tmp.d <- data.frame(SEC=secs[i],wave=wave,sex,sector,sex.sector,wage=tmp)
+      tmp.d.p <- data.frame(SEC=secs[i],wave=rep(1:18,2),
             Sex=gl(2,18,labels=c("Men","Women")),premium=tmp.p)
       dta.wv <- rbind(dta.wv,tmp.d)
       dta.p <- rbind(dta.p,tmp.d.p)
 }
 
-g <- ggplot(data=dta.p,aes(x=wave+1990,y=premium*100,colour=Sex)) + geom_line() + facet_wrap(~SEG,scales="fixed")
-g + labs(x="Year",y="Public sector premium (%)") + theme_bw() + geom_hline(aes(yintercept=0),colour="red")
+g <- ggplot(data=dta.p,aes(x=wave+1990,y=premium*100,colour=Sex)) + geom_line() + facet_wrap(~SEC,scales="fixed")
+g + labs(x="Year",y="Public sector premium (%)") + theme_bw() + geom_hline(aes(yintercept=0),colour="red") + ylim(c(-20,35))
 
       seg6 <- dta3$jbseg == lv.seg[segs[3]]
       seg.re <- lmer(lhrwage ~ PrivateSect * sex + age + agesq.k + PrivateSect*wave + quals + jobsen + (1|pid) , data=dta3, subset=seg6)
@@ -468,3 +467,29 @@ for (i in 1:length(segs)){
 sink()
 close(zz)
 capture.output(cat(PublicResultsFem,sep="\n"),file="PublicResultsFem.txt")
+
+
+##########################
+## Figure 1
+##############################
+
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==211)) # Mechanical engineers
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==233)) # Secondary school teachers
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==340)) # Nurses
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==242)) # Solicitors
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==532)) # Plumbers
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==620)) # Chefs, cooks
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==640)) # Assistant nurses
+prop.table(xtabs(~PrivateSect,dta3,subset=jbsoc==952)) # Kitchen porters
+
+occs <- gl(8,2,labels=c('Mechanical engineers','Secondary school teachers','Nurses',
+                        'Solicitors','Plumbers','Chefs, cooks','Assistant nurses',
+                        'Kitchen porters'))
+sect <- gl(2,1,16,labels=c('Private','Public'))
+prop <- c(.86,.14,.066,.93,.17,.83,.87,.13,.90,.098,.75,.25,.15,.85,.81,.19)
+
+fig1.d <- data.frame(Occupations=occs,Sector=sect,Percentage=prop*100)
+fig1 <- ggplot(data=fig1.d,aes(x=Occupations,y=Percentage,fill=Sector)) + geom_bar(position='dodge',stat='identity') + theme_bw() + coord_flip()
+fig1
+
+xtabs(~sec.rc + jbsoc, dta3)
