@@ -2,7 +2,7 @@
 \usepackage{tabularx,booktabs,url}
 \usepackage[dvips]{graphicx}
 \usepackage{amsmath}
-%\usepackage[nolists]{endfloat}
+\usepackage[nolists]{endfloat}
 \usepackage{vmargin,setspace}
 \usepackage[longnamesfirst,sort]{natbib}
 \usepackage{fancyhdr}
@@ -57,7 +57,7 @@
 \thispagestyle{fancy}
 
 \begin{abstract}
-    There has been a lot of recent interest in the relationship between public and private sector pay.  The difficulty with such comparisons is that the occupational composition of the public and private sectors is quite different.  In this paper I explore the difference between public and private pay within various socio-economic groups. I find that the often-reported public sector premium virtually disappears for men using this approach.  However, there is still a significant public sector premium for women in most socio-economic groups.
+    There has been a lot of recent interest in the media and government about the size of the public sector pay premium, with one recent report estimating public sector wages to be 40 per cent higher than those in the private sector \citep{Holmes2011}. The difficulty with such comparisons is that the occupational composition of the public and private sectors is quite different, a difference that has been exacerbated in recent years as many low paid, public sector jobs have been ``out-sourced'' to the private sector.  In this paper I explore the difference between public and private pay within various socio-economic groups. I find that the often-reported public sector premium virtually disappears for men using this approach.  However, there is still a significant public sector premium for women in most socio-economic groups, although a significant proportion of this seems to be a trade union rather than a public sector pay premium.
 \end{abstract}
 
 \section{Introduction}
@@ -71,42 +71,45 @@ Comparing the levels of pay earned by employees in the public and private sector
 
  One problem with this type of research is that the public and private sector workforces are very different \citep{IDS2011}.  Figure \ref{fig:segs} shows a comparison of the proportion of employees in the public and private sector in selected occupations using data from the British Household Panel Survey (BHPS).  Comparing the average earnings of a public sector employee with the average earnings of a private sector employee will therefore not be very informative, as the proportion of the variance in an individual's earnings explained by his or her socio-economic group is much larger than the proportion explained by whether he or she works in the public or private sectors.
 
- Other authors using other sources of data have reported similar differences.  For example, \citet{Damant2011}
+A similar point has been made by a number of other authors.  For example, \citet{Damant2011}
  find that the public sector is made up of a higher proportion of highly skilled jobs, a difference that has grown in recent years as more public authorities have outsourced low skilled jobs to the private sector.  They also find that the public sector workforce is, on average, older than that of the private sector.  Given that earnings tend to increase with age (and hence experience), this difference is also likely to explain some of the difference between public and private sector wages.  Indeed, \citet{Damant2011} find that, if one restricts one's attention only to employees who are graduates, public sector workers are paid 5.7 per cent \emph{less} than graduates in the private sector.  However, this report estimates the public sector premium in 2010 to be 7.8 per cent after controlling for age, qualifications, region of the country and occupation (as defined by the Standard Occupational Classification 2000 \citep{SOC2000}).
 
- The purpose of this paper is to estimate a separate public sector pay premium for men and women in each of nine socio-economic groups using data obtained from the British Household Panel Survey (BHPS).  This approach enables us to investigate in much more detail the differences between public and private sector pay, controlling for age, education, experience and, because we are using panel data, for unobserved heterogeneity. I used the National Statistics Socio-economic Classification to define socio-economic groups \citep{ONSSEC}.  This classification is a measure of ``the employment relations and conditions of occupations''. More precisely, is is based on labour market situation, which ``equates to \dots economic security and prospects of economic advancement''; and  work situation, which ``refers primarily to location in systems of authority and control at work, although degree of autonomy at work is a secondary aspect'' \citep{ONSSEC}. In this analysis, only people in employment are included: self-employed and own-account workers are excluded.
+ The purpose of this paper is to estimate a separate public sector pay premium for men and women in each of nine socio-economic groups using data obtained from the British Household Panel Survey (BHPS).  This approach enables me to investigate in much more detail the differences between public and private sector pay, controlling for age, education, experience and, because I am using panel data, for unobserved heterogeneity. I used the National Statistics Socio-economic Classification (NS-SEC) to define socio-economic groups \citep{ONSSEC}.  This classification is a measure of ``the employment relations and conditions of occupations''. More precisely, it is based on labour market situation, which ``equates to \dots economic security and prospects of economic advancement''; and  work situation, which ``refers primarily to location in systems of authority and control at work, although degree of autonomy at work is a secondary aspect'' \citep{ONSSEC}. In this analysis, only people in employment are included; self-employed and own-account workers are excluded.
 
- The reason for using this approach is that the occupations in the same socio-economic group can be thought of as equivalent in these important respects. This is essentially a compromise between comparing specific occupations---very few of which have large numbers of people in both the public and private sectors---and pooling all occupations together and controlling only for individual employee differences.  Separate analysis of people in different socio-economic groups means that we are comparing people in occupations that can be thought of as very similar to each other with the exception that some are in the private sector and some in the public sector. This should enable additional insights into the nature of any systematic differences in the wages earned by people in these two sectors.
+ The reason for using this approach is that the occupations in the same socio-economic group can be thought of as equivalent in these important respects. This is essentially a compromise between comparing specific occupations---very few of which have large numbers of people in both the public and private sectors---and pooling all occupations together and controlling only for individual employee differences.  Separate analysis of people in different socio-economic groups means that we are comparing people in occupations that can be thought of as very similar to each other with the exception that some are in the private sector and some in the public sector. This should enable additional insights into the nature of any systematic differences in the wages earned by people in these two sectors.  In particular, the classification into socio-economic groups takes account of organizational size and whether or not the employee occupies a supervisory or managerial role.
 
 \section{Literature}
-A number of recent publications have investigated the size of the difference in average earnings between people employed in the public and private sectors.  A report by the Policy Exchange \citep{Holmes2011} created a lot of attention in the media with its central claim that there was a 24 per cent pay premium for working in the public sector in the UK in 2010, with this rising to 43 per cent if the value of pensions was taken into account.  Less widely reported at the time was that this raw difference declined to 8.8 per cent when factors like age, experience and qualifications were taken into account.  However, as some commentators on this report noted, a problem with such comparisons is finding meaningful comparators:
+A number of recent publications have investigated the size of the difference in average earnings between people employed in the public and private sectors.  A report by the Policy Exchange \citep{Holmes2011} created a lot of attention in the media with its central claim that there was a 24 per cent pay premium for working in the public sector in the UK in 2010, with this rising to 43 per cent if the value of pensions was taken into account.  Less widely reported at the time was that this raw difference declined to 8.8 per cent when factors like age, experience and qualifications were taken into account.  However, as some commentators on this report noted, a problem with such studies is finding meaningful comparators:
 \begin{quote}
     Although individuals in the public and private sectors may sometimes be able to identify similar roles within their respective organisations, the sectors as a whole have very different profiles. The public sector employs a higher proportion of professionally-trained staff, undertaking specific service roles such as those within healthcare, education and the emergency services. As a result, a much larger percentage of the public sector workforce is educated to diploma or degree level \citep[p.~13]{IDS2011}
 \end{quote}
 These differences certainly account for a large proportion of the observed raw differences in earnings between the two sectors.  Consequently, a number of studies have attempted to control for variation in employees, either by explicitly modelling factors associated with human capital (for example, education and experience) or, when panel data are used, controlling for individual heterogeneity by means of fixed effects.
 
-\citet{Yu2005} use quantile regression on panel data and include controls for years of education and work experience to obtain their estimates of a public sector pay premium for male employees in full time employment.  In 2001 they found that public sector workers in the lowest decile of the wage distribution enjoyed a pay premium of 13.2 per cent.  However, this premium declined as wages increased, with public sector workers at the median experiencing a pay \emph{penalty}, with the penalty increasing to 11.7 per cent at the top decile of the wage distribution.  Overall, these differences virtually ``cancelled out,'' so a standard regression model would have estimated the public sector pay premium at 0.25 per cent.
+\citet{Yu2005} use quantile regression on panel data and include controls for years of education and work experience to obtain their estimates of a public sector pay premium for male employees in full time employment.  In 2001 they found that public sector workers in the lowest decile of the wage distribution enjoyed a pay premium of 13.2 per cent.  However, this premium declined as wages increased, with public sector workers at the median experiencing a pay \emph{penalty}, with the penalty increasing to 11.7 per cent in the top decile of the wage distribution.  Overall, these differences virtually ``cancelled out,'' so a standard regression model would have estimated the public sector pay premium at 0.25 per cent.
 
 \citet{Luciflora2006} review a number of previous studies and find that the average estimated public sector wage premium is ``close to 5 percent, although  it  is  much  higher  for  females  (15–-18  percent)  as  compared  to
 men (2-–5 percent)'' (p.~48).  However, about half of this difference can be explained by observed individual differences, such as education.   Using data from a single year (1998) from the Labour Force Survey and quantile regression, \citet{Luciflora2006} find that the public sector pay premium declines monotonically as pay increases, although it does not become a penalty until one reaches the top decile.  They also find that the public sector premium is much greater for women than for men at all wage levels.
 
-\citet{Disney2008} estimate the public sector wage premium (or penalty) using a fixed effects approach, but also adopt a method that allows the size of the premium to change over time.  This is particularly important given that they study the public sector premium over more than thirty years (1975--2006), and so an assumption that the premium was constant would be difficult to justify.  They obtain separate estimates for the premium for men and women, but otherwise assume that it is the same for all employees regardless of occupation.
+\citet{Disney2008} estimate the public sector wage premium (or penalty) using a fixed effects approach, but also adopt a method that allows the size of the premium to change over time.  This is particularly important given that they study the public sector premium over more than thirty years (1975--2006), and so an assumption that the premium was constant would be difficult to justify.  They obtain separate estimates for the premium for men and women, but otherwise assume that it is the same for all employees regardless of occupation.  They conclude that ``long run public sector pay differentials do not seem to depart strongly from zero'' (p.~13), although there is more evidence of a persistent public sector premium for women than men.  They also point out that ``it seems implausible \dots that there would be large long run differentials in labour market rewards where in markets there is a high degree of worker mobility''.
 
-\citet{Chatterji2007} restrict their attention to public sector premia among male employees, and use a cross-sectional research design based on the Workplace Employee Relations Survey 2004.  They find a raw public sector wage premium of 11.7 per cent.  However, they also find that only 1.6 percent of this premium cannot be explained by individual and occupational characteristics, of which the level of formal education was the most important. Among highly skilled employees, they find evidence that public sector workers experience a pay \emph{penalty} of 5.5 per cent when individual and occupational characteristics are taken into account.  On the other hand, unskilled employees in the public sector enjoy a pay premium of 7.2 per cent.
+\citet{Chatterji2007} restrict their attention to public sector premiums among male employees, and use a cross-sectional research design based on the Workplace Employee Relations Survey 2004.  They find a raw public sector wage premium of 11.7 per cent.  However, they also find that only 1.6 percent of this premium cannot be explained by individual and occupational characteristics, of which the level of formal education was the most important. Among highly skilled employees, they find evidence that public sector workers experience a pay \emph{penalty} of 5.5 per cent when individual and occupational characteristics are taken into account.  On the other hand, unskilled employees in the public sector enjoy a pay premium of 7.2 per cent.
 
-The evidence from previous research, then, shows a number of consistent results. First, women enjoy a public sector pay premium that is considerably larger than that experienced by men.  Second, the pay premium is larger at the lower ends of the pay distribution, and may become a pay penalty at the higher end of the distribution.  Finally, the size of the pay premium (or penalty) is not constant, but has varied significantly over time.  These results have been obtained using a variety of data sources and methods of estimation.  To date, however, researchers have not used panel data to investigate variations in the size of the public sector pay gap among different socio-economic groups.
+The evidence from previous research, then, shows a number of consistent results. First, there is some evidence of a public sector pay premium, with at least one study putting it at 24 per cent.  However, when methods that allow for individual human capital and unobserved heterogeneity are used the size of the premium becomes much small, with most studies estimating it to be less than 5 per cent across all employees.  Second, women are consistently found to enjoy a public sector pay premium that is considerably larger than that experienced by men, and the premium is larger at the lower ends of the pay distribution, and may become a pay penalty at the higher end of the distribution.  These results have been obtained using a variety of data sources and methods of estimation.  The majority, though, suffer from the problem of comparing all employees regardless of how different their occupations are, thereby constraining the public sector pay premium (or penalty) to be the same across all occupations.  Although one might think that the ideal alternative would be to study individual occupations separately, there are relatively few occupations that are identical in both public and private sectors and which are large enough for there to be reasonable numbers in national panel surveys.  In this paper, therefore, I obtain separate estimates of the size of the public sector pay premium (or penalty) for groups of occupations that constitute a socio-economic group.
+
+
 
 \section{Theory}
 
-Why might wages in the public and private sectors differ? There are a number of possible explanations.  First, in the UK a large proportion of public sector employees' pay is set at a national level.  This might be expected to give employers monopsonistic power and hence depress wages, as has been suggested by a number of authors \citep{Boal1997}.  Evidence on this point is mixed, however, and clearly the monopsony is not perfect given that there are typically private sector counterparts to public sector employees like nurses, teachers and doctors who on average earn more than their public sector colleagues \citep{Barron2012}. Additionally any market structure effect may be offset by the fact that levels of trade union membership are greater in the public than the private sector and bilateral pay bargaining is generally carried out a national level.  Given this institutional framework, it is not clear where the balance of power will lie, and hence it is not clear whether one would predict a public sector premium or penalty.
+Why might wages in the public and private sectors differ? There are a number of possible explanations.  First, in the UK the pay of many public sector employees is set at a national level.  This might be expected to give employers monopsonistic power and hence depress wages, as has been suggested by a number of authors \citep{Boal1997}.  Evidence on this point is mixed, however, and clearly the monopsony is not perfect given that there are typically private sector counterparts to public sector employees like nurses, teachers and doctors who on average earn more than their public sector colleagues \citep{Barron2012}. Additionally any market structure effect may be offset by the fact that levels of trade union membership are greater in the public than the private sector and bilateral pay bargaining is generally carried out a national level.  Given this institutional framework, it is not clear where the balance of power will lie, and hence it is not clear whether one would predict a public sector premium or penalty.
 
-Also possibly relevant is the idea that employees in some occupations found predominantly in the public sector in the UK, such as nursing and teaching, benefit employees in non-pecuniary ways in addition to the pecuniary benefits they receive.  Such employees are intrinsically motivated to deliver high quality service, and their greater ability to do so in the public sector would mean that they would still prefer to work in the public sector even if they could earn higher wages in the private sector.  This would lead one to predict higher wages in the private sector for a given occupation.
+Also possibly relevant is the idea that employees in some occupations found predominantly in the public sector in the UK, such as nursing and teaching, benefit employees in non-pecuniary ways in addition to the pecuniary benefits they receive.  Such employees may be intrinsically motivated to deliver high quality service, and their greater ability to do so in the public sector would mean that they might still prefer to work in the public sector even if they could earn higher wages in the private sector.  This would lead one to predict higher wages in the private sector for a given occupation.
 
-The often reported higher levels of public sector pay premium for women than men raises the question of whether there are differences in the levels of discrimination faced by women in the two sectors \citep{Byron2010}.  Again, it is not clear what theory would predict.  On the one hand, if there is a greater commitment to the use of formalized procedures for recruitment, job evaluation, and so on in the public sector, we might expect to see lower levels of discrimination here \citep{Kaufman2002}. Bureaucratic formalization has been referred to by some scholars as ``the great leveller'', but feminist critiques have suggested that bureaucratic structures can be used to legitimize gender differences or even that they are inherently patriarchal and hence create gender inequalities \citep{Baron2007}.   On the other hand, competitive pressures in the private sector might mean that inefficiencies in recruitment, retention and deployment of staff due to discrimination are less likely to persist \citep{Becker1971}.  Empirical evidence is, however, mixed, with some studies suggesting there is indeed less pay discrimination in the private sector, but others finding evidence of greater levels of discrimination \citep{Byron2010}.
+The often-reported higher levels of public sector pay premium for women than men raises the question of whether there are differences in the levels of discrimination faced by women in the two sectors \citep{Byron2010}.  Again, it is not clear what theory would predict.  On the one hand, if there is a greater commitment to the use of formalized procedures for recruitment, job evaluation, and so on in the public sector, we might expect to see lower levels of discrimination here \citep{Kaufman2002}. Bureaucratic formalization has been referred to by some scholars as ``the great leveller'', but feminist critiques have suggested that bureaucratic structures can be used to legitimize gender differences or even that they are inherently patriarchal and hence create gender inequalities \citep{Baron2007}.   On the other hand, competitive pressures in the private sector might mean that inefficiencies in recruitment, retention and deployment of staff due to discrimination are less likely to persist \citep{Becker1971}.  Empirical evidence is, however, mixed, with some studies suggesting there is indeed less pay discrimination in the private sector, but others finding evidence of greater levels of discrimination \citep{Byron2010}.
+
 
 \section{Data and methods}
 
-The data for our study come from the British Household Panel Survey (BHPS)  \citep{Taylor2010}.  The BHPS began in 1991 and has been carried out annually every since; we use data from the first eighteen waves.  The original survey included a nationally representative sample of over 5000 households.  All members of these households over the age of sixteen were included, making a total of about 10,000 individuals.  These people have been included in all subsequent waves, as have any new adult members of the original households and new households formed by members of the original panel.
+The data for our study come from the British Household Panel Survey \citep{Taylor2010}.  The BHPS began in 1991 and has been carried out annually ever since; we use data from the first eighteen waves.  The original survey included a nationally representative sample of over 5000 households.  All members of these households over the age of sixteen were included, making a total of about 10,000 individuals.  These people have been included in all subsequent waves, as have any new adult members of the original households and new households formed by members of the original panel.
 
 \begin{table}[htb]
 \caption{Socio-economic group classification.  \label{tab:SEG}}
@@ -136,7 +139,7 @@ y_{it} = x_{it} \beta + \alpha_i + u_{it}; \notag\\
 \alpha_i \sim N(0,\sigma_\alpha^2); \label{eq:wage}\\
 u_{it} \sim N(0,\sigma_u^2),\notag
 \end{gather}
-where $y_{it}$ is the usual log hourly wage of employee $i$ in year $t$, $x_{it}$ are explanatory variables, $\beta$ is a vector of regression parameters to be estimated, and $\alpha$ and $u$ are error terms with the properties shown.
+where $y_{it}$ is the usual log hourly wage of employee $i$ in year $t$, $x_{it}$ are explanatory variables, $\beta$ is a vector of regression parameters to be estimated, and $\alpha_i$ and $u_{it}$ are error terms with the properties shown.
 
 Explanatory variables include a measure of the highest level of education obtained by the employee (secondary school qualification or tertiary education qualification, with no qualification being the excluded category), the number of years the employee has been in his or her current job, age in years and its square, dummy variables for the wave of the survey, sex, an indicator of whether the employee works in the public sector, and an interaction between sex and public sector.  When testing for stability of the public sector pay gap over time we also included interaction between the wave dummies and the public sector indicator.  Estimates were obtained using the \texttt{lmer} function from the \texttt{lme4} package in R \citep{R2011,lme2011}
 
@@ -274,7 +277,7 @@ Deviance	        &6912.4	    &12045.5   &5861.7     &3368.9         \\
 However, these estimates do not control for a number of important characteristics
 that are likely to affect earnings and which also may well differ between the public and
 private sectors. In table \ref{tab:full} we show estimates of random intercept models that control
-for age, education, and seniority in addition to including sex and year fixed effects (again, not shown in the table). These results are displayed graphically in figure \ref{fig:full}. Including these controls results in a reduction in the estimated size of the public sector pay premiums (or penalty) compared to those shown in table \ref{tab:baseline}, as one would expect given what we know about the differences in the public and private sector workforces.  The largest pay premium---17.8 per cent---is enjoyed by female employees in lower managerial occupations closely followed by women lower professionals.
+for age, education, and seniority in addition to including sex and year fixed effects (again, not shown in the table). These results are displayed graphically in figure \ref{fig:full}. Including these controls results in a reduction in the estimated size of the public sector pay premiums (or penalty) compared to those shown in table \ref{tab:baseline}, as one would expect given what we know about the differences in the public and private sector workforces.  The largest pay premium---17.8 per cent---is enjoyed by female employees in lower managerial occupations closely followed by female lower professionals.
 Double-digit public sector premiums are also experienced by women who work in higher management, higher professional, higher supervisory, intermediate, lower technical and routine occupations.  All of these estimates are statistically significant, as is the slightly smaller premium enjoyed by women working in semi-routine occupations.
 
 \begin{table}[tb]
@@ -350,9 +353,7 @@ Double-digit public sector premiums are also experienced by women who work in hi
     \end{tabularx}
 \end{table}
 
-Undoubtedly the most striking finding, however, is that for men the public sector pay premium almost disappears.  In five occupations, the difference in pay between public and private sector employees is not statistically significant.  In the higher supervisory, intermediate, lower professional and lower technical occupations there is a statistically significant difference, although in all but one of these the estimated premium is less than ten per cent.  On the other hand, even controlling for these individual differences, women in the public sector continue to earn large and statistically significant pay premiums in all occupational groups.
-
-The implication of this is that the public sector pay premium is not just higher for women than men, as found in some previous studies, but is in fact largely confined to women.  This naturally raises the question of why there should be such a striking gender difference.
+Undoubtedly the most striking finding, however, is that for men the public sector pay premium almost disappears.  In five occupations, the difference in pay between public and private sector employees is not statistically significant.  In the higher supervisory, intermediate, lower professional and lower technical occupations there is a statistically significant difference, although in all but one of these the estimated premium is less than ten per cent.  On the other hand, even controlling for these individual differences, women in the public sector continue to earn large and statistically significant pay premiums in all occupational groups.  The implication of this is that the public sector pay premium is not just higher for women than men, as found in some previous studies, but is in fact largely confined to women.
 
 \begin{table}[ht]
     \caption{Percentage public sector premiums for men and women in each socio-economic group. \label{tab:fullprem}}
@@ -390,43 +391,134 @@ The implication of this is that the public sector pay premium is not just higher
     showing 95 per cent confidence intervals.\label{fig:full}}
 \end{figure}
 
-Given the eighteen year period over which the data analysed in this paper were collected, it is important to check for time variation in the size of the public sector premiums and penalties.  To achieve this, interactions between wave indicators and the public sector dummy variable were created.  Full results of these regressions are available from the author.  Tests of a significant improvement in model fit as a result of including these interactions are shown in table \ref{tab:time}.  These show that there is evidence of statistically significant time variation in the size of the public sector premium in six of the SEGs.  However, as figure \ref{fig:time} shows, these differences do not substantially change the patterns discussed above.
+Given the eighteen year period over which the data analysed in this paper were collected, it is important to check for time variation in the size of the public sector premiums and penalties.  To achieve this, interactions between wave indicators and the public sector dummy variable were created.  Full results of these regressions are available from the author.  Tests of a significant improvement in model fit as a result of including these interactions are shown in table \ref{tab:time}.  These show that there is no evidence of statistically significant time variation in the size of the public sector premium over the full period of the study, a conclusion reinforced by figure \ref{fig:time}.  This is despite the significant variation in the size of the premium in some socio-economic groups, which presumably reflects short-term effects on labour market conditions, such as public sector pay policies \citep{Disney2008}.  Note that this implies that cross-sectional estimates of the size of the public sector pay premium may not be a reliable guide to the size of any long-run differential.
 
+
+% latex table generated in R 2.15.1 by xtable 1.7-0 package
+% Wed Sep 05 11:40:34 2012
 \begin{table}[ht]
     \caption{Tests of time invariance. \label{tab:time}}
     \begin{center}
     \begin{tabular}{lrr}
-    \toprule
-    Socio-economic group & Chi-square & p-value \\
-    \midrule
-    Personal service & 31.5 & .017 \\
-    Unskilled manual & 13.3 & .71 \\
-    Junior non-manual & 28.7 & .037 \\
-    Semi-skilled manual & 22.5 & .167 \\
-    Skilled manual & 29.8 & .028 \\
-    Foreman manual & 10.5 & .88 \\
-    Managers, small & 21.3 & .21 \\
-    Int. non-manual & 43.6 & $ < .01 $\\
-    Managers, large&30.3 & .024 \\
-    Professionals & 52.2 & $< .01$ \\
-    \bottomrule
-    \end{tabular}
-    \end{center}
+  \toprule
+ Socio-economic group & Chi-square & p-value \\
+  \midrule
+    Higher management & 13.90 & 0.67 \\
+    Higher professional & 14.52 & 0.63 \\
+    Higher supervisory & 17.40 & 0.43 \\
+    Intermediate occupations & 15.55 & 0.56 \\
+    Lower managerial & 17.08 & 0.45 \\
+    Lower professional & 23.59 & 0.13 \\
+    Lower technical & 15.05 & 0.59 \\
+    Routine & 13.43 & 0.71 \\
+    Semi-routine & 14.69 & 0.62 \\
+   \bottomrule
+\end{tabular}
+\end{center}
 \end{table}
 
 \begin{figure}[ht]
-    \includegraphics[scale=.7,angle=90]{TimeVariationSEC.pdf}
+    \includegraphics[scale=.7,angle=90]{TimeVariationSEC2.pdf}
     \caption{Time variation in the public sector premium. \label{fig:time}}
 \end{figure}
 
+These results demonstrate that controlling for key indicators of individual human capital, when we compare \emph{male} public and private sector employees in \emph{similar occupations} most of the difference in earnings that has been frequently reported in previous research disappears.  However, the same is not true of women, and this raises the question, why do women fare so much worse in the private sector than their male counterparts?
+
+
+\begin{table}[tb]
+    \caption{Random intercept regression estimates (standard errors in parentheses).\label{tab:union}}
+    \begin{tabularx}{\textwidth}{Yccccc}
+    \toprule
+                    &Routine    &Semi-routine &Lower &Intermediate    &Higher \\
+                    &           &             &technical&           &supervisory \\
+    \midrule
+    Constant		&-.201     	&-.251		&-.273	&-.303	&-.166\\
+    				&(.050)	    &(.044)	    &(.057)	&(.046)	&(.113)\\
+    Public sector	&.048		&.026		&.038	&.078	&.077\\
+    				&(.017)	    &(.015)	    &(.019)	&(.016)	&(.037)\\
+    Male			&.244	    &.252	    &.248	&.258	&.279\\
+    				&(.014)	    &(.012)	    &(.016)	&(.013)	&(.028)\\
+    Public sector   &-.094	    &-.069	    &-.032	&-.060	&-.003\\
+    \quad $\times	$ Male%
+    				&(.026)	    &(.022)	    &(.029)	&(.023) &(.052)\\
+    Proportion union&.390       &.331       &.311   &.292   &.233 \\
+                    &(.034)     &(.028)     &(.037) &(.030) &(.069) \\
+    Age				&.074	    &.073    	&.077	&.079	&.074\\
+    				&(.002)	    &(.002)	    &(.003)	&(.002)	&(.005)\\
+    Age squared		&-.828	    &-.807	    &-.837	&-.866	&-.803\\
+    \quad (in thousands)%	
+    				&(.031)	    &(.027)	    &(.035)	&(.029) &(.069)\\
+    Secondary 		&.192	    &.230     	&.245	&.229	&.214\\
+    \quad education &(.017)     &(.015)	    &(.019)	&(.016)	&(.034)\\
+    Tertiary		&.535	    &.568		&.626	&.584	&.598\\
+    \quad education &(.020)     &(.017)	    &(.022)	&(.018)	&(.039)\\
+    Seniority		&.005	    &.004		&.004	&.003	&.003\\
+    				&(.001)	    &(.001)	    &(.001)	&(.001)	&(.002)\\
+    \midrule
+    Std. Dev. Constant&	.331    &.345       &.368	&.355	&.359\\
+    Std. Dev. Residual&	.296    &.271       &.273	&.268	&.284\\
+    N			    &7554       &9799       &6101	&9068	&1707\\
+    Individuals		&5354       &6518       &4569	&6155	&1546\\
+    Deviance		&8231.9     &9860.4     &6875.4 &9329.9 &2069.4\\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+
+\begin{table}[t]
+    \begin{tabularx}{\textwidth}{Ycccc}
+    \toprule
+			&Lower    & Lower &Higher &Higher \\
+            & managerial & professional & professional & managerial \\
+    \midrule
+    Constant			&-.301	&-.387	&-.309	&-.049	   \\
+    					&(.067)	&(.052)	&(.080)	&(.098)	    \\
+    Public sector		&.112	&.099	&.069	& .080	\\
+    					&(.022)	&(.018)	&(.027)	&(.033)	    \\
+    Male				&.287	&.259	&.306	&.293	\\
+    					&(.017)	&(.014)	&(.020)	&(.025)	\\
+    Public sector		&-.135	&-.100	&-.102	&-.105	\\
+    \quad $\times$ Male%
+    					&(.031) &(.026)	&(.038)	&(.046)	\\
+    Proportion union    &.275   &.318   &.261   &.184  \\
+                        &(.041) &(.032) &(.051) &(.060) \\
+    Age					&.076	&.082	&.077	&.064	\\
+    					&(.003)	&(.003)	&(.004)	&(.005)	\\
+    Age squared			&-.843	&-.909	&-.856	&-.665	\\
+    \quad (in thousands)%
+    					&(.040) &(.032)	&(.048)	&(.058)	\\
+    Secondary 			&.262	&.238	&.272	&.259	\\
+    \quad education	    &(.021)	&(.017)	&(.025)	&(.031)	\\
+    Tertiary			&.615	&.598	&.646	&.651	\\
+    \quad education	    &(.024)	&(.020)	&(.029)	&(.035)	 \\
+    Seniority			&.003	&.004	&.004	&.003	\\
+    					&(.001)	&(.001)	&(.001)	&(.002)	\\
+    \midrule
+    Std. Dev. Constant  &.349   &.354	&.357	&.391	\\
+    Std. Dev. Residual  &.265   &.290	&.289	&.229	\\
+    N					&4584   &7715	&3453	&2138	\\
+    Individuals			&3664   &5396	&2819	&1844	\\
+    Deviance			&4914.0 &8630.3 &4089.4 &2408.1   \\
+    \bottomrule
+    \end{tabularx}
+\end{table}
+
+
+One possibility is that, despite doing separate analyses for groups of similar occupations, controlling for individual human capital and individual unobserved heterogeneity, there are still systematic differences between public and private sector occupations that are also correlated with factors that affect the pay premium.  One possible candidate is trade union membership.  It is well known that trade union membership is higher in the public than the private sector.  In 2011, public sector union membership was 56.5 per cent compared to 14.1 per cent in the private sector \citep{BIS2012}. In all socio-economic groups, men employed in the private sector earn more than women in the private sector, and men in the public sector earn more than women in the public sector.  However, the gender pay gap is smaller in the public sector than in the private sector as a result of the larger public sector premium enjoyed by women.  If trade union membership is associated with protection against discriminatory practices, then this would lead to more equal pay.  Individual trade union membership might be important, but in this context of greater importance would be the proportion of employees in an occupation that are trade union members since occupations with high levels of union membership are more likely to experience formal collective bargaining.  To test this, I included the proportion of people in an occupation who reported themselves to be a trade union member as a regressor.  These results are shown in table \ref{tab:union} and the estimates public sector premiums are shown graphically in figure \ref{fig:union}.
+
+\begin{figure}
+\includegraphics[scale=.7,angle=90]{PremiumsWithTU.pdf}
+\caption{Estimated pay premiums controlling for age, qualifications, seniority, and trade union membership showing 95 per cent confidence intervals.\label{fig:union}}
+\end{figure}
+
+These results show that the proportion of the employees in an occupation that are trade union members has a statistically significant effect on earnings in all socio-economic groups, with the largest effects being found among the lowest-paid groups.  What is more, when one compares the estimated public sector pay premiums shown in tables \ref{tab:full} and \ref{tab:union} it can be seen that controlling for trade union membership reduces the size of the pay premium for all employees.  This is shown visually by comparing figures \ref{fig:full} and \ref{fig:union}.  Indeed, there are now no statistically significant pay premiums for men, and the size of the premium for women is greatly attenuated.  One might reasonably conclude, therefore, that at least a proportion of the public sector pay premium enjoyed by women is actually a trade union membership premium.
+
+
 \section{Discussion}
-These results demonstrate that controlling for key indicators of individual human capital, when we compare \emph{male} public and private sector employees in similar occupations most of the difference in earnings that has been frequently reported in previous research disappears.  However, the same is not true of women, and this raises the question, why do women fare so much worse in the private sector than their male counterparts?
+These results demonstrate that controlling for key indicators of individual human capital, when we compare \emph{male} public and private sector employees in \emph{similar occupations} most of the difference in earnings that has been frequently reported in previous research disappears.  Although the same is not true of women, even for them the public sector premium is much smaller than often claimed.
 
-Some of the difference may be due to the gendered nature of many occupations.  Since occupations are not evenly distributed between the private and public sectors, if female-dominated occupations are more likely to be found in the private sector, then we might observe this pattern, given that wage levels in female-dominated occupations have been shown to be lower.  To check this we calculated the percentage of the employees in an occupation in our sample that were women.  The mean percentage in the public sector was 63 per cent, while in the private sector is was 45 per cent. Of all the women employees in the sample, 66 per cent worked in the public sector.  So in fact there are more jobs in female-dominated occupations in the public sector than in the private sector.  In a sense this is to be expected; if women can earn more in the public sector while men enjoy no such premium, we would expect a much stronger preference for working in the public sector among women than men.  However, this makes it less likely that the observed public sector premium for women is due to differences in the occupational characteristics of the two sectors.
+It is worth re-emphasising that women in the public sector do not earn more than their male colleagues; rather the larger wage premium for women means that the gender pay gap in the public sector is smaller than it is in the private sector.  This result is consistent with the claim that the ``bureaucratic formalization'' often associated with the public sector provides some protection for women against pay discrimination.  We have also seen that some of this ``public sector'' premium is actually a trade union premium.  It is worth noting that \citet{BIS2012} estimates the trade union wage premium to be 18.1 per cent for all employees, but it is 30.7 per cent for women compared to 9.9 per cent for men.  We might expect that trade unions would be involved in both negotiating the nature of the ``bureaucratic formalization'' and in ensuring that these procedures are followed in practice, hence it is perhaps not surprising the find that the more heavily unionised public sector suffers from less pay discrimination than the private sector.
 
-\begin{db}
-Other ideas?
-\end{db}
+There are some limitations to this study, not least the amount of missing data among reports of trade union membership which results in the smaller sample sizes reported in table \ref{tab:union} than the other regressions.  Nevertheless, the results provide a useful corrective to some of the recent claims regarding the size of the public sector wage premium.  They also show that any public policy changes that were designed to reduce the size of this premium---such as the UK government's desire to encourage local rather than national pay bargaining in the public sector---may well have a much more detrimental impact on women than on men.
 
 \clearpage
 \bibliography{Employment}

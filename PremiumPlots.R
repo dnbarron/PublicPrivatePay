@@ -124,3 +124,126 @@ dev.off()
 #gg <- ggplot(data=prem.f, aes(x=Sex,y=PremPct))  + geom_point(aes(colour=SEG),size=2)# + facet_wrap(~SEG)
 
 xtable(data.frame(prem.f[,c(1,5)],prem.f[,7]*100))
+
+
+
+##############################
+###########
+#### Table 5 and figure 7
+#######################
+
+prem.f <- matrix(, ncol=7)
+vn <- c("SEC","Premium","Diff","Hat", "Sex", "SEprem", "PremPct")
+colnames(prem.f) <- vn
+prem.f <- data.frame(prem.f)
+wages <- matrix(, ncol=4)
+colnames(wages) <- c('SEC','Sector','Sex','Wage')
+wages <- data.frame(wages)
+
+for (i in 1:length(secs)){
+  seg6 <- dta3$sec.rc == secs[i]
+  seg.re <- lmer(lhrwage ~ PrivateSect*sex + age + agesq.k + quals + jobsen + fwave + prop.female + (1|pid) , data=dta3, subset=seg6)
+  cat("\n",date(),secs[i],"\n",sep="\n")
+  #      display(seg.re, digits=3)
+  b <- fixef(seg.re)
+  vc <- vcov(seg.re)
+  k <- length(b)
+  b0 <- b[1]
+  b1 <- b[2]
+  men <- b[3]
+  vb1 <- vc[2,2]
+  b3 <- b[k]
+  vb3 <- vc[k,k]
+  cb1b3 <- vc[2,k]
+  p.men <- b1 + b3
+  p.women <- b1
+  d.men <- exp(b0 + b1 + men + b3) - exp(b0 + men)
+  d.women <- exp(b0 + b1) - exp(b0)
+  hat.pub.men <- exp(b0+b1+men+b3 + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  hat.pvt.men <- exp(b0+men + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  d.hat.men <- hat.pub.men - hat.pvt.men
+  hat.pub.women <- exp(b0+b1+ b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  hat.pvt.women <- exp(b0 + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  d.hat.women <- hat.pub.women - hat.pvt.women
+  #      p.men.pct <- d.men/exp(b0 + men) 
+  #      p.women.pct <- d.women/exp(b0) 
+  p.men.pct <- hat.pub.men/hat.pvt.men - 1
+  p.women.pct <- hat.pub.women/hat.pvt.women - 1
+  se.p.men <- sqrt(vb1 + vb3 + 2*cb1b3)
+  se.p.women <- sqrt(vb1)
+  tmp <- data.frame(secs[i],p.men,d.men,d.hat.men,"Men", se.p.men, p.men.pct)
+  tmp2 <- data.frame(secs[i], p.women,d.women,d.hat.women, "Women",se.p.women, p.women.pct )
+  names(tmp) <- vn
+  names(tmp2) <- vn
+  prem.f <- rbind(prem.f,tmp,tmp2)
+  tmp.w <- data.frame(rep(secs[i],4),c('Public','Public','Private','Private'),c('Men','Women','Men','Women'),c(hat.pub.men,hat.pub.women,hat.pvt.men,hat.pvt.women))
+  colnames(tmp.w) <- c('SEC','Sector','Sex','Wage')
+  wages <- rbind(wages,tmp.w)
+
+}
+prem.f <- prem.f[-1,]
+wages <- wages[-1,]
+
+g <- ggplot(data=wages, aes(x=Sex,y=Wage,colour=Sector)) + facet_wrap(~SEC) + geom_point(size=3) + labs(x=NULL,y="Log hourly wage in pounds") + theme_bw()
+#pdf("FullPremium.pdf", paper="a4r")
+g
+  dev.off()
+
+#gg <- ggplot(data=prem.f, aes(x=Sex,y=PremPct))  + geom_point(aes(colour=SEG),size=2)# + facet_wrap(~SEG)
+
+xtable(data.frame(prem.f[,c(1,5)],prem.f[,7]*100))
+
+
+### Prop tu
+
+prem.f <- matrix(, ncol=7)
+vn <- c("SEC","Premium","Diff","Hat", "Sex", "SEprem", "PremPct" )
+colnames(prem.f) <- vn
+prem.f <- data.frame(prem.f)
+
+for (i in 1:length(secs)){
+  seg6 <- dta3$sec.rc == secs[i]
+  seg.re <- lmer(lhrwage ~ PrivateSect*sex + age + agesq.k + quals + jobsen + fwave + prop.tu + (1|pid) , data=dta3, subset=seg6)
+  cat("\n",date(),secs[i],"\n",sep="\n")
+  #      display(seg.re, digits=3)
+  b <- fixef(seg.re)
+  vc <- vcov(seg.re)
+  k <- length(b)
+  b0 <- b[1]
+  b1 <- b[2]
+  men <- b[3]
+  vb1 <- vc[2,2]
+  b3 <- b[k]
+  vb3 <- vc[k,k]
+  cb1b3 <- vc[2,k]
+  p.men <- b1 + b3
+  p.women <- b1
+  d.men <- exp(b0 + b1 + men + b3) - exp(b0 + men)
+  d.women <- exp(b0 + b1) - exp(b0)
+  hat.pub.men <- exp(b0+b1+men+b3 + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  hat.pvt.men <- exp(b0+men + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  d.hat.men <- hat.pub.men - hat.pvt.men
+  hat.pub.women <- exp(b0+b1+ b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  hat.pvt.women <- exp(b0 + b[4]*40 + b[5]*(40^2/1000) + b[6] + b[8]*2 + b[k-1])
+  d.hat.women <- hat.pub.women - hat.pvt.women
+  #      p.men.pct <- d.men/exp(b0 + men) 
+  #      p.women.pct <- d.women/exp(b0) 
+  p.men.pct <- hat.pub.men/hat.pvt.men - 1
+  p.women.pct <- hat.pub.women/hat.pvt.women - 1
+  se.p.men <- sqrt(vb1 + vb3 + 2*cb1b3)
+  se.p.women <- sqrt(vb1)
+  tmp <- data.frame(secs[i],p.men,d.men,d.hat.men,"Men", se.p.men, p.men.pct)
+  tmp2 <- data.frame(secs[i], p.women,d.women,d.hat.women, "Women",se.p.women, p.women.pct )
+  names(tmp) <- vn
+  names(tmp2) <- vn
+  prem.f <- rbind(prem.f,tmp,tmp2)
+}
+prem.f <- prem.f[-1,]
+
+g <- ggplot(data=prem.f, aes(x=Sex,y=Premium,ymin=Premium-2*SEprem,ymax=Premium+2*SEprem)) + facet_wrap(~SEC) + geom_pointrange(size=1,colour="blue") + labs(x=NULL,y="Log hourly wage premiums in pounds") + geom_hline(aes(yintercept=0),colour="red") + theme_bw()
+#pdf("FullPremium.pdf", paper="a4r")
+g
+#dev.off()
+
+
+### Pay levels, not premiums
